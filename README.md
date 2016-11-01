@@ -29,3 +29,9 @@ Planungsphase
 * Webhosting
 * Implementierung der Funktionen
 * Testphase
+
+### Projektteam
+Thiago Gumhold (Projektleiter)
+Alexander Dietrich
+Phillip Schermann
+Selina Brinnich
