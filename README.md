@@ -32,6 +32,9 @@ Planungsphase
 
 ### Projektteam
 Thiago Gumhold (Projektleiter)
+
 Alexander Dietrich
+
 Phillip Schermann
+
 Selina Brinnich
