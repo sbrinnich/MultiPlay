@@ -1,5 +1,5 @@
 ﻿body {
-	background-color: darkcyan;
+	background-color: whitesmoke;
 }
 
 body.body_style {
@@ -11,7 +11,8 @@ body.body_style {
 nav  {
 	background-color: #2EFF94 !important;
 	height: 6em !important;
-	border: 3px solid black;
+	border: 5px solid black !important;
+	border-radius: 0.5em !important;
 }
 
 .navbar-brand {
@@ -22,8 +23,13 @@ nav  {
 }
 
 #navbar-collapse ul {
+	font-size: 2em;
 	margin-right: 3em;
-	margin-top: 4em;
+	margin-top: 0.7em;
+}
+
+#navbar-collapse ul a{
+	margin-left: 3em;
 }
 
 #navbar_team {
