@@ -1,5 +1,9 @@
 ﻿body {
-	background-color: #4FFEFF;
+	background-color: darkcyan;
+}
+
+body.body_style {
+
 }
 
 /** NAVBAR **/
@@ -7,6 +11,7 @@
 nav  {
 	background-color: #2EFF94 !important;
 	height: 6em !important;
+	border: 3px solid black;
 }
 
 .navbar-brand {
