@@ -19,9 +19,10 @@ Funktionalitäten der Website nach Priorität geordnet:
 * Global-chat
 * Team-chat
 * Professionelles Layout der Website
-* Ablauf des Projekts:
 
-Planungsphase
+Ablauf des Projekts:
+
+* Planungsphase
 * Erstellung der PM-Dokumente
 * Erstellung von Konzeptgrafiken für die Website
 * Initialisierung
@@ -38,3 +39,8 @@ Alexander Dietrich
 Phillip Schermann
 
 Selina Brinnich
+
+### Links
+* Zeitaufzeichnung: https://docs.google.com/spreadsheets/d/18s_BoaUAmvC-rrVSAKTjz_QmH7CjI3enfrmvoJzm3VE/edit?usp=sharing
+* Task-Tracking: https://trello.com/b/M4cUeoVd/multiplay
+* Bug-Tracking: https://trello.com/b/e3fZl4RT/multiplay-bugs
