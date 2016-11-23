@@ -235,6 +235,8 @@ main div .item.picture .carousel-caption{
 /** Main der Zusatzseiten (Impressum/Hilfe)   **/
 
 #zusatzseiten{
-    padding-top: 1em;
+    margin: 0;
+    padding-top: 6em;
+    padding-left: 2em;
 
 }
