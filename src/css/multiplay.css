@@ -33,6 +33,11 @@ nav {
     background-color: #24CCB1 !important;
 }
 
+.nav.navbar-nav hr {
+    margin: 0;
+    border-top: 1px solid #777 !important;
+}
+
 nav a:hover {
     color: #24CCB1 !important;
 }
@@ -62,12 +67,13 @@ a.navbar-brand img {
     margin-top: 0.8em;
 }
 
-#navbar-collapse ul {
-    font-size: 2em;
+.navbar-collapse ul {
+    font-size: 1.5em;
 }
 
-#navbar-collapse ul a {
+.navbar-collapse ul a {
     color: #B9FFC9 !important;
+    padding: 10px !important;
 }
 
 @media (max-width: 2000px) {
@@ -89,7 +95,7 @@ a.navbar-brand img {
     }
     .navbar-nav {
         float: right!important;
-        margin-top: 7.5px;
+        margin-top: 5px;
     }
     .navbar-nav>li {
         float: none;
