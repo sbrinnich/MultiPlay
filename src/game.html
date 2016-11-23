@@ -19,12 +19,28 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">Multiplay</a>
+                <a class="navbar-brand hidden-sm hidden-xs" href="index.html"><img src="img/Logo.png" /></a>
+                <a class="navbar-brand visible-sm visible-xs" href="index.html"><img src="img/Logo-short.png" /></a>
 
                 <!-- Team Name -->
                 <div class="navbar-text" id="navbar_team">
                     Team <span id="team_name">...</span>
                 </div>
+
+                <!-- Collapse Button -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="Hilfe.html">Hilfe</a></li>
+                    <li><a href="Impressum.html">Kontakt</a></li>
+                    <li><a href="Impressum.html">Impressum</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -94,9 +110,9 @@
     <footer class="footer">
         <div class="container">
             <span class="col-lg-3 col-md-3 col-sm-3 col-xs-12">&copy; MultiPlay Team</span>
-            <a href="#" class="col-lg-1 col-md-1 col-sm-2 col-xs-4 col-lg-offset-6 col-md-offset-6 col-sm-offset-3">Hilfe</a>
-            <a href="#" class="col-lg-1 col-md-1 col-sm-2 col-xs-4">Kontakt</a>
-            <a href="#" class="col-lg-1 col-md-1 col-sm-2 col-xs-4">Impressum</a>
+            <a href="Hilfe.html" class="col-lg-1 col-md-1 col-sm-2 hidden-xs col-lg-offset-6 col-md-offset-6 col-sm-offset-3">Hilfe</a>
+            <a href="Impressum.html" class="col-lg-1 col-md-1 col-sm-2 hidden-xs">Kontakt</a>
+            <a href="Impressum.html" class="col-lg-1 col-md-1 col-sm-2 hidden-xs">Impressum</a>
         </div>
     </footer>
 
