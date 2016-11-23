@@ -1,4 +1,12 @@
-﻿body {
+﻿/** GENERAL HEIGHTS **/
+html, body, main {
+    height: 100%;
+    overflow: hidden;
+}
+
+/** **/
+
+body {
     background-image: url(../img/Background.png);
 	background-repeat: repeat;
 }
@@ -95,6 +103,43 @@ header div h2 {
 
 /** GAME-DIV **/
 
-#game_div {
+.game_div {
     border: 1px solid black;
+}
+
+/** Screen-specific heights on gamesite**/
+
+#gamesite_lgmd {
+    height: 70%;
+}
+
+#gamesite_lgmd div {
+    height: 100%;
+}
+
+#gamesite_sm {
+    height: 70%;
+}
+
+#gamesite_sm div {
+    height: 60%;
+}
+
+#gamesite_sm div:nth-of-type(3) {
+    margin-top: 5%;
+    height: 35%;
+}
+
+#gamesite_xs {
+    height: 70%;
+}
+
+#gamesite_xs div {
+    margin-top: 5%;
+    height: 20%;
+}
+
+#gamesite_xs div:first-of-type {
+    margin-top: 0;
+    height: 50%;
 }
