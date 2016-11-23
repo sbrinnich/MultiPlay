@@ -34,19 +34,23 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
                     <li><a href="index.html">Startseite</a></li>
-
+                    <hr />
                     <li><a href="#">Tic-Tac-Toe</a></li>
                     <li><a href="#">4 - Gewinnt</a></li>
-
-                    <li><a href="#">Hilfe</a></li>
-                    <li><a href="#">Kontakt</a></li>
-                    <li><a href="#">Impressum</a></li>
+                    <hr />
+                    <li><a href="hilfe.html">Hilfe</a></li>
+                    <li><a href="impressum.html">Impressum</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <!-- Header mit Spielauswahl -->
     <header>
+
+    </header>
+    <!--Mainbereich mit kurzer Erklärung und Spieleliste-->
+    <main>
+        <!--Platzhalter für die Erklärung TicTacToe -->
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -56,10 +60,10 @@
                             <div class="carousel-inner" role="listbox">
                                 <!-- jeder div-container ist ein Bild im Karussel -->
                                 <div class="item active picture">
-                                    <a href="game.html"><img src="img/4-Gewinnt-Thiago.png" alt="4-gewinnt" class="img-responsive"/></a>
+                                    <a href="game.html"><img src="img/4-Gewinnt-Thiago.png" alt="4-gewinnt"/></a>
                                     <div class="carousel-caption">
                                         <h1>4 - Gewinnt</h1>
-                                        <p>
+                                        <p class="hidden-xs">
                                             4-Gewinnt ist ein sehr weit verbreitetes Gesellschaftsspiel für 2 Parteien. Es geht darum, seine Steine so
                                             zu setzen, damit man 4 gleiche Steine in
                                             eine Reihe bekommt. Egal ob vertikal, horizontal oder diagonal, wenn du die 4er Reihe hast, hat dein Team
@@ -69,10 +73,10 @@
                                     </div>
                                 </div>
                                 <div class="item picture">
-                                    <a href="game.html"><img src="img/Tic-Tac-Toe-Thiago.png" alt="tic-tac-toe" class="img-responsive"/></a>
+                                    <a href="game.html"><img src="img/Tic-Tac-Toe-Thiago.png" alt="tic-tac-toe"/></a>
                                     <div class="carousel-caption">
                                         <h1>Tic - Tac - Toe</h1>
-                                        <p>
+                                        <p class="hidden-xs">
                                             Tic-Tac-Toe ist ein sehr weit verbreitetes Gesellschaftsspiel für 2 Parteien.
                                             Es geht darum 3 gleiche Symbole in einer Reihe (vertikal, horizontal oder diagonal)zu bekommen.
                                             Parteien kommen abwechselnd zum zug. Klicke hier um ein Team zu betreten und mit der Comunity zu spielen!
@@ -94,19 +98,13 @@
                 </div>
             </div>
         </div>
-    </header>
-    <!--Mainbereich mit kurzer Erklärung und Spieleliste-->
-    <main>
-        <!--Platzhalter für spätere erweiterte Funktionen -->
     </main>
-</div>
 <footer class="footer">
     <div class="container">
-        <span class="col-lg-3 col-md-3 col-sm-3 col-xs-4">&copy; MultiPlay Team</span>
+        <span class="col-lg-3 col-md-3 col-sm-3 col-xs-12">&copy; MultiPlay Team</span>
         <a href="hilfe.html"
-           class="col-lg-1 col-md-1 col-sm-2 col-xs-2 col-lg-offset-6 col-md-offset-6 col-sm-offset-3">Hilfe</a>
-        <a href="impressum.html" class="col-lg-1 col-md-1 col-sm-2 col-xs-2">Kontakt</a>
-        <a href="impressum.html" class="col-lg-1 col-md-1 col-sm-2 col-xs-2">Impressum</a>
+           class="col-lg-1 col-md-1 col-sm-2 hidden-xs col-lg-offset-6 col-md-offset-6 col-sm-offset-3">Hilfe</a>
+        <a href="impressum.html" class="col-lg-1 col-md-1 col-sm-2 hidden-xs">Impressum</a>
     </div>
 </footer>
 </body>

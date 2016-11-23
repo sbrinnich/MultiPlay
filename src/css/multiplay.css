@@ -1,5 +1,5 @@
 ﻿/** GENERAL HEIGHTS **/
-html, body, main {
+html, body {
     height: 100%;
     overflow: hidden;
 }
@@ -22,22 +22,26 @@ img {
 /** NAVBAR **/
 
 nav {
-    background-color: #24CCB1 !important;
     height: 6em !important;
-    border: 5px solid #449987 !important;
-    border-radius: 0.3em !important;
+
+    background: #0E78AD; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(right, #0E78AD, #BCD9E8); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left, #0E78AD, #BCD9E8); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left, #0E78AD, #BCD9E8); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to left, #0E78AD, #BCD9E8); /* Standard syntax */
 }
 
 .nav.navbar-nav {
-    background-color: #24CCB1 !important;
+    background-color: #0E78AD !important;
 }
 
-nav a:hover {
-    color: #24CCB1 !important;
+.nav.navbar-nav hr {
+    margin: 0;
+    border-top: 1px solid #BCD9E8 !important;
 }
 
-#navbar-collapse ul a:hover {
-    color: #24CCB1 !important;
+.navbar-collapse ul a:hover {
+    background-color: #DB0E1C !important;
 }
 
 nav div, a.navbar-brand {
@@ -59,14 +63,24 @@ a.navbar-brand img {
 .navbar-toggle {
     font-size: 2em;
     margin-top: 0.8em;
+    border-color: #BCD9E8 !important;
 }
 
-#navbar-collapse ul {
-    font-size: 2em;
+.navbar-toggle:hover{
+    background-color: #DB0E1C !important;
 }
 
-#navbar-collapse ul a {
-    color: #B9FFC9 !important;
+.navbar-toggle span{
+    background-color: #BCD9E8 !important;
+}
+
+.navbar-collapse ul {
+    font-size: 1.5em;
+}
+
+.navbar-collapse ul a {
+    color: #BCD9E8 !important;
+    padding: 10px !important;
 }
 
 @media (max-width: 2000px) {
@@ -88,7 +102,7 @@ a.navbar-brand img {
     }
     .navbar-nav {
         float: right!important;
-        margin-top: 7.5px;
+        margin-top: 0;
     }
     .navbar-nav>li {
         float: none;
@@ -100,6 +114,12 @@ a.navbar-brand img {
     .collapse.in{
         display:block !important;
     }
+}
+
+.navbar-collapse.in {
+    overflow: hidden;
+    max-height: none !important;
+    height: auto !important;
 }
 
 /** HEADER **/
@@ -120,6 +140,28 @@ header {
 }
 
 /** MAIN **/
+
+main {
+    height: 70%;
+    overflow: hidden;
+}
+
+main div {
+    height: 100%;
+}
+
+/** CAROUSEL **/
+
+main div .item.picture img{
+    max-height: 60%;
+    width: auto;
+}
+
+main div .item.picture .carousel-caption{
+    height: 30%;
+    padding-top: 2px;
+    margin-top: 30px;
+}
 
 /** FOOTER **/
 
@@ -153,7 +195,7 @@ header {
 /** Screen-specific heights on gamesite**/
 
 #gamesite_lgmd {
-    height: 70%;
+    height: 100%;
 }
 
 #gamesite_lgmd div {
@@ -161,7 +203,7 @@ header {
 }
 
 #gamesite_sm {
-    height: 70%;
+    height: 100%;
 }
 
 #gamesite_sm div {
@@ -174,7 +216,7 @@ header {
 }
 
 #gamesite_xs {
-    height: 70%;
+    height: 100%;
 }
 
 #gamesite_xs div {
