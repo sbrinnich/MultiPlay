@@ -29,9 +29,8 @@ nav {
     border-radius: 0.3em !important;
 }
 
-.navbar-brand img {
-    height: 50px;
-    width: auto;
+.nav.navbar-nav {
+    background-color: #24CCB1 !important;
 }
 
 nav a:hover {
@@ -42,6 +41,22 @@ nav a:hover {
     color: #24CCB1 !important;
 }
 
+nav div, a.navbar-brand {
+    height: 100%;
+    padding: 0;
+}
+
+a.navbar-brand img {
+    max-height: 100%;
+    width: auto;
+}
+
+#navbar_team {
+    font-size: 2em;
+    margin-top: 0.8em;
+    margin-left: 2em;
+}
+
 #navbar-collapse ul {
     font-size: 2em;
 }
@@ -50,9 +65,41 @@ nav a:hover {
     color: #B9FFC9 !important;
 }
 
-#navbar_team {
-    font-size: 2em;
-    margin-top: 0.8em;
+@media (max-width: 2000px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
 }
 
 /** HEADER **/
