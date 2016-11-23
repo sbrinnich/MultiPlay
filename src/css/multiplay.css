@@ -1,5 +1,5 @@
 ﻿/** GENERAL HEIGHTS **/
-html, body, main {
+html, body {
     height: 100%;
     overflow: hidden;
 }
@@ -141,6 +141,28 @@ header {
 
 /** MAIN **/
 
+main {
+    height: 70%;
+    overflow: hidden;
+}
+
+main div {
+    height: 100%;
+}
+
+/** CAROUSEL **/
+
+main div .item.picture img{
+    max-height: 60%;
+    width: auto;
+}
+
+main div .item.picture .carousel-caption{
+    height: 30%;
+    padding-top: 2px;
+    margin-top: 30px;
+}
+
 /** FOOTER **/
 
 .footer {
@@ -173,7 +195,7 @@ header {
 /** Screen-specific heights on gamesite**/
 
 #gamesite_lgmd {
-    height: 70%;
+    height: 100%;
 }
 
 #gamesite_lgmd div {
@@ -181,7 +203,7 @@ header {
 }
 
 #gamesite_sm {
-    height: 70%;
+    height: 100%;
 }
 
 #gamesite_sm div {
@@ -194,7 +216,7 @@ header {
 }
 
 #gamesite_xs {
-    height: 70%;
+    height: 100%;
 }
 
 #gamesite_xs div {
