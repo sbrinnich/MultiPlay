@@ -170,7 +170,12 @@ main div .item.picture .carousel-caption{
     bottom: 0;
     width: 100%;
     height: 4em;
-    background-color: #24CCB1;
+
+    background: #0E78AD; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #0E78AD, #BCD9E8); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #0E78AD, #BCD9E8); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #0E78AD, #BCD9E8); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #0E78AD, #BCD9E8); /* Standard syntax */
 }
 
 .footer div span, .footer div a {
