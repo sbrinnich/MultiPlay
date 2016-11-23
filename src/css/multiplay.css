@@ -8,17 +8,16 @@ html, body, main {
 
 body {
     background-image: url(../img/Background.png);
-	background-repeat: repeat;
+    background-repeat: repeat;
 }
 
-div.picture  {
+div.picture {
     text-align: center !important;
 }
 
 img {
     display: inline !important;
 }
-
 
 /** NAVBAR **/
 
@@ -73,7 +72,6 @@ header {
 }
 
 /** MAIN **/
-
 
 /** FOOTER **/
 
