@@ -188,3 +188,10 @@ header {
     margin-top: 0;
     height: 50%;
 }
+
+/** Main der Zusatzseiten (Impressum/Hilfe)   **/
+
+#zusatzseiten{
+    padding-top: 6em;
+
+}
