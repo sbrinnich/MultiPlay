@@ -15,21 +15,37 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="body_style">
+
         <!-- Navigationsbereich -->
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">MultiPlay</a>
-                </div>
-                <!-- Impessum  -->
-                <div class="navbar-text" id="navbar_team">
-                    Impressum <span id="team_name"></span>
+                    <a class="navbar-brand hidden-sm hidden-xs" href="index.html"><img src="img/Logo.png" /></a>
+                    <a class="navbar-brand visible-sm visible-xs" href="index.html"><img src="img/Logo-short.png" /></a>
+
+                    <!-- Impressum -->
+                    <div class="navbar-text" id="navbar_team">
+                        Impressum
+                    </div>
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="nav navbar-nav">
+                            <li><a href="index.html">Startseite</a></li>
+                            <li><a href="Hilfe.html">Hilfe</a></li>
+                            <li><a href="Impressum.html">Kontakt</a></li>
+                            <li><a href="Impressum.html">Impressum</a></li>
+                        </ul>
+                    </div>
                 </div>
         </nav>
-
-
-        <main>
+<main id="zusatzseiten">
         
  <!-- 
  Wenn eine Website keinen über die Darstellung des persönlichen Lebensbereichs oder Präsentation der Medieninhaberin/des Medieninhabers hinausgehenden Informationsgehalt aufweist, der geeignet ist, die öffentliche Meinungsbildung zu beeinflussen, handelt es sich um eine "kleine Website". Die Offenlegungspflicht beschränkt sich in diesem Fall auf
@@ -59,7 +75,7 @@
         <p>Tel.: (+43)664 1234 123</p>         
         <p>E-Mail: thiago.gumhold@chello.com</p>
 
-        </main>
+</main>
 
 
     <footer class="footer">
