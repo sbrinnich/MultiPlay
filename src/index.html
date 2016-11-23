@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Multiplay</title>
-    <link rel="icon" href="img/icon.png">
+    <link rel="icon" href="img/Icon.png">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,7 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">MultiPlay</a>
+                <a class="navbar-brand" href="#"><img src="img/Logo.png" alt="logo"/> </a>
                 <button type="button" class="navbar-toggle collapsed navbar-right" data-toggle="collapse"
                         data-target="#navbar-collapse" aria-expanded="false">
                     <span class="sr-only">Navigation ein-/ausblenden</span>
@@ -43,8 +43,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div id="my-slider" class="carousel slide" data-ride="carousel">
-                        <!-- wrapper -->
+                    </div>
+                    <!-- Karussel -->
+                    <div class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner" role="listbox">
+                            <!-- jeder div-container ist ein Bild im Karussel -->
                             <div class="item active picture">
                                 <a href="game.html"><img src="img/4-Gewinnt-Thiago.png" alt="4-gewinnt"/></a>
                                 <div class="carousel-caption">
@@ -58,39 +61,36 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- controls or next and prev buttons -->
+                        <!-- Zurück und Vor-Buttons im Karussel-Objekt -->
                         <a class="left carousel-control" href="#my-slider" role="button" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                             <span class="sr-only">Zurück</span>
                         </a>
-                        <a class="right carousel-control" href="#my-slider" role="button" data-slide="prev">
+                        <a class="right carousel-control" href="#my-slider" role="button" data-slide="next">
                             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Zurück</span>
+                            <span class="sr-only">Vor</span>
                         </a>
                     </div>
                 </div>
             </div>
-            <div>
-
-            </div>
+        </div>
     </header>
     <!--Mainbereich mit kurzer Erklärung und Spieleliste-->
     <main>
         <!--Platzhalter für die Erklärung TicTacToe -->
         <p>
-        <div></div>
+            Tic-Tac-Toe ist ein sehr weit verbreitetes Gesellschaftsspiel für 2 Parteien.
+            Es geht darum 3 gleiche Symbole in einer Reihe (vertikal, horizontal oder diagonal)zu bekommen.
+            Parteien kommen abwechselnd zum zug. Klicke hier um ein Team zu betreten und mit der Comunity zu spielen!
+            <a href="">Tic - Tac - Toe</a>
         </p>
 
-        </p>
-        <!-- Platzhalter für die Erklärung 4-Gewinnt -->
         <p>
-
+            4-Gewinnt ist ein sehr weit verbreitetes Gesellschaftsspiel für 2 Parteien. Es geht darum, seine Steine so zu setzen, damit man 4 gleiche Steine in
+            eine Reihe bekommt. Egal ob vertikal, horizontal oder diagonal, wenn du die 4er Reihe hast, hat dein Team gewonnen! Klicke hier um ein Team auszuwählen und
+            mit der Comunity zu spielen!
+            <a href="">4 - Gewinnt</a>
         </p>
-        <!-- Spieleliste zur Auswahl -->
-        <ul>
-            <li><a href="">Tic - Tac - Toe</a></li>
-            <li><a href="">4 - Gewinnt</a></li>
-        </ul>
     </main>
 </div>
 <footer class="footer">

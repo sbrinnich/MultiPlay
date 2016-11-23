@@ -3,8 +3,12 @@
 	background-repeat: repeat;
 }
 
-div.picture a img {
-    padding-left: 170px;
+div.picture  {
+    text-align: center !important;
+}
+
+img {
+    display: inline !important;
 }
 
 .container-fluid {
@@ -28,36 +32,17 @@ nav a:hover {
     color: #24CCB1 !important;
 }
 
-.navbar-brand {
-    box-sizing: border-box;
-    margin-top: 0.3em;
-    font-size: 3em;
-    letter-spacing: 0.2em;
-    color: #B9FFC9 !important;
-    background-color: red !important;
-    border-bottom-right-radius: 6em;
-    border-top-right-radius: 6em;
-    padding-left: 4em;
-}
-
 #navbar-collapse ul {
     font-size: 2em;
-    padding-right: 3em;
-    margin-top: 0.5em;
-    background-color: red !important;
-    border-bottom-left-radius: 6em;
-    border-top-left-radius: 6em;
 }
 
 #navbar-collapse ul a {
-    margin-left: 3em;
     color: #B9FFC9 !important;
 }
 
 #navbar_team {
     font-size: 2em;
     margin-top: 0.8em;
-    margin-left: 2em;
 }
 
 /** HEADER **/
