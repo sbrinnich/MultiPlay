@@ -124,11 +124,7 @@ a.navbar-brand img {
 
 /** HEADER **/
 
-header {
-    margin-top: 8em;
-}
-
-.carousel-caption {
+.carousel-caption{
     position: relative;
     left: auto;
     right: auto;
