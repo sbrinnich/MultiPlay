@@ -44,3 +44,9 @@ Selina Brinnich
 * Zeitaufzeichnung: https://docs.google.com/spreadsheets/d/18s_BoaUAmvC-rrVSAKTjz_QmH7CjI3enfrmvoJzm3VE/edit?usp=sharing
 * Task-Tracking: https://trello.com/b/M4cUeoVd/multiplay
 * Bug-Tracking: https://trello.com/b/e3fZl4RT/multiplay-bugs
+
+###Server Login: ehost.com
+User: thiago.gumhold@gmail.com
+PW: fF0nH,%N`g=^pmc+
+
+###Email: info@multiplay.website
