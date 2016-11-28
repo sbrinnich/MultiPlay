@@ -80,14 +80,28 @@ window.onclick= function(getMousePos){
 	console.log(cY);
 
 		// Sorgt dafür das der Kreis in die letztfreie Ebene kommt
-		for(u=5;u>=0;u--)
+
+		if(fieldpos[cX][cY] == 0)
 		{
-			if(fieldpos[cX][u] != 1 && fieldpos[cX][u] != 2)
-				{
-					if(cY<u)							
-						{ cY=u; }	
-				}
+			for(u=5;u>=0;u--)
+			{
+				if(fieldpos[cX][u] != 1 && fieldpos[cX][u] != 2)
+					{
+						if(cY<u)							
+							{ cY=u; }	
+					}
+			}
 		}
+		else
+		{
+			for(u=5;u>=0;u--)
+			{
+				if(fieldpos[cX][u] == 0 && (fieldpos[cX][u+1] == 1 || fieldpos[cX][u+1] == 2))
+					{							
+							{ cY=u; }	
+					}
+		}
+
 
 
 			console.log(cY);
@@ -96,7 +110,7 @@ window.onclick= function(getMousePos){
 		if(turn%2==0 && fieldpos[cX][cY]==0)	//Kontrolliert ob der Zug gerade ist dann ist x dran und ob schon etwas in dem Feld ist
 		{
 			c.drawImage(bo, (144*(cX)+8), (115*(cY)+31));	// Zeichnet das Bild des X in das gewählte Feld
-			c.drawImage(hg, 0, 0); c.drawImage(hg, 0, 0); 
+			c.drawImage(hg, 0, 0); 
 			turn= turn+1;
 			fieldpos[cX][cY]=1;  // Sagt über 1 das im Feld ein X steht
 		}
