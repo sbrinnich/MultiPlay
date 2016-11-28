@@ -1,7 +1,4 @@
 
-// Start tic tac toe: load_tictactoe(canvas);
-// Start 4 gewinnt: load_4gewinnt(canvas);
-
 window.onload = function() {
     var gametype = findGetParameter("name");
     if(gametype == "tictactoe"){
