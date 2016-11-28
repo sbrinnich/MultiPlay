@@ -151,12 +151,12 @@ main div {
 /** CAROUSEL **/
 
 main div .item.picture img{
-    max-height: 68%;
+    max-height: 62%;
     width: auto;
 }
 
 main div .item.picture .carousel-caption{
-    height: 22%;
+    height: 28%;
     padding-top: 2px;
     margin-top: 30px;
 }
