@@ -1,16 +1,14 @@
 
 //Einbinden der Bilder
 
-var canvas;
-
 var hg = new Image();		
-hg.src="img/TicTacToe.png";
+hg.src="img/tic-tac-toe/Tic-Tac-Toe-board.png";
 
 var o = new Image();
-o.src="img/TicTacToe_0.png";
+o.src="img/tic-tac-toe/Tic-Tac-Toe-red.png";
 
 var x = new Image();
-x.src="img/TicTacToe_1.png";
+x.src="img/tic-tac-toe/Tic-Tac-Toe-blue.png";
 
 var bl = new Image();
 bl.src="img/Blue.png";
@@ -38,19 +36,28 @@ window.onload =function()
 {
 	// muss verwendet werden um etwas im canvis verendern zu können
 
-    canvas = document.getElementById("tic");
+    var canvas = document.getElementById("tic");
 	var c = canvas.getContext('2d');
+    canvas.style.width ='100%';
+    canvas.width  = canvas.scrollWidth;
+    canvas.style.height=canvas.scrollWidth+'px';
+    canvas.height = canvas.scrollWidth;
 
 
 	var hg = new Image();
-	hg.src="img/TicTacToe.png";
+	hg.src="img/tic-tac-toe/Tic-Tac-Toe-board.png";
 
 
 	// onload wird der Hintergrund gesetzt
 	hg.onload = function(){
-	c.drawImage(hg, 0, 0);
+	    c.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollWidth);
 	};
 
+    addListener(canvas);
+
+};
+
+function addListener(canvas) {
     canvas.addEventListener('mouseup', function(evt) {
 
         var c = canvas.getContext('2d');
@@ -58,7 +65,7 @@ window.onload =function()
         var draw=0; // schaut ob jemand gewonnen hat
         var u; // Variable für die Schleife
         var j; // Variable für die Schleife
-        var g=500; // bestimmt die Abmessungen des Feldes (500x500)
+        var g=canvas.scrollWidth; // bestimmt die Abmessungen des Feldes (500x500)
         var cX = Math.floor(getMousePos(canvas,evt).x/(g/3)); // setzt cX auf einen wert zwischen 0 und 2
         var cY = Math.floor(getMousePos(canvas,evt).y/(g/3)); // setzt cY auf einen wert zwischen 0 und 2
 
@@ -68,14 +75,14 @@ window.onload =function()
         {
             if(turn%2==0 && fieldpos[cX][cY]==0)	//Kontrolliert ob der Zug gerade ist dann ist x dran und ob schon etwas in dem Feld ist
             {
-                c.drawImage(x, (g/3*cX)+(g/15), (g/3*cY)+(g/15));	// Zeichnet das Bild des X in das gewählte Feld
+                c.drawImage(x, 0, 0, x.height, x.width, (g/3*cX), (g/3*cY), canvas.scrollWidth/3, canvas.scrollWidth/3);	// Zeichnet das Bild des X in das gewählte Feld
                 turn= turn+1;
                 fieldpos[cX][cY]=1;  // Sagt über 1 das im Feld ein X steht
             }
 
             else if(fieldpos[cX][cY]==0)
             {
-                c.drawImage(o, (g/3*cX)+(g/15), (g/3*cY)+(g/15));	// Zeichnet das Bild des O in das gewählte Feld
+                c.drawImage(o, 0, 0, o.height, o.width, (g/3*cX), (g/3*cY), canvas.scrollWidth/3, canvas.scrollWidth/3);	// Zeichnet das Bild des O in das gewählte Feld
                 turn= turn+1;
                 fieldpos[cX][cY]=2;	// Sagt über 2 das im Feld ein O steht
             }
@@ -106,7 +113,6 @@ window.onload =function()
         }
 
     },false);
-
 };
 
 
