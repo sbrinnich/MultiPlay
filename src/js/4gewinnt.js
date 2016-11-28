@@ -3,13 +3,13 @@ function load_4gewinnt(canvas) {
 	//Einbinden der Bilder
 
     hg = new Image();
-    hg.src = "./img/4-gewinnt/4-Gewinnt-board.png";
+    hg.src = "img/4-gewinnt/4-Gewinnt-board.png";
 
     ro = new Image();
-    ro.src = "./img/4-gewinnt/4-Gewinnt-red.png";
+    ro.src = "img/4-gewinnt/4-Gewinnt-red.png";
 
     bo = new Image();
-    bo.src = "./img/4-gewinnt/4-Gewinnt-blue.png";
+    bo.src = "img/4-gewinnt/4-Gewinnt-blue.png";
 
 	// Ein Array für die Felder des Spiels
 
@@ -40,9 +40,6 @@ function init_canvas_4gewinnt(canvas)
     canvas.width  = canvas.scrollWidth;
     canvas.style.height=canvas.scrollWidth*0.736328125+'px';
     canvas.height = canvas.scrollWidth*0.736328125;
-
-	var hg = new Image();
-	hg.src="img/4-gewinnt/4-Gewinnt-board.png";
 
 	// onload wird der Hintergrund gesetzt
 	hg.onload = function(){ 
@@ -76,24 +73,22 @@ function addListener_4gewinnt(canvas){
                 }
             }
         }
-        else
-        {
-            for(u=5;u>=0;u--)
-            {
-                if(fieldpos[cX][u] == 0 && (fieldpos[cX][u+1] == 1 || fieldpos[cX][u+1] == 2))
-                {
-                    { cY=u; }
+        else {
+            for (u = 5; u >= 0; u--) {
+                if (fieldpos[cX][u] == 0 && (fieldpos[cX][u + 1] == 1 || fieldpos[cX][u + 1] == 2)) {
+                    cY = u;
                 }
             }
-            console.log("X: "+cX+", Y: "+cY);
+        }
 
 
         if(turn%2==0 && fieldpos[cX][cY]==0)	//Kontrolliert ob der Zug gerade ist dann ist x dran und ob schon etwas in dem Feld ist
         {
-        	// 0.78125%
             c.drawImage(bo, 0, 0, bo.width, bo.height,
-				canvas.scrollWidth/7*cX+canvas.scrollWidth*0.78125, canvas.scrollHeight/6*cY+canvas.scrollHeight*4.1168658699,
-				canvas.scrollWidth/7, canvas.scrollHeight/6);	// Zeichnet das Bild des X in das gewählte Feld
+                (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7*cX+canvas.scrollWidth*0.0078125,
+                (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6*cY+canvas.scrollHeight*0.041168658699,
+                (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7,
+                (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6);	// Zeichnet das Bild des X in das gewählte Feld
             c.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
             turn= turn+1;
             fieldpos[cX][cY]=1;  // Sagt über 1 das im Feld ein X steht
@@ -102,8 +97,10 @@ function addListener_4gewinnt(canvas){
         else if(fieldpos[cX][cY]==0)
         {
             c.drawImage(ro, 0, 0, ro.width, ro.height,
-                canvas.scrollWidth/7*cX+canvas.scrollWidth*0.78125, canvas.scrollHeight/6*cY+canvas.scrollHeight*4.1168658699,
-                canvas.scrollWidth/7, canvas.scrollHeight/6);	// Zeichnet das Bild des O in das gewählte Feld
+                (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7*cX+canvas.scrollWidth*0.0078125,
+                (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6*cY+canvas.scrollHeight*0.041168658699,
+                (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7,
+                (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6);	// Zeichnet das Bild des O in das gewählte Feld
             c.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
             turn= turn+1;
             fieldpos[cX][cY]=2;	// Sagt über 2 das im Feld ein O steht

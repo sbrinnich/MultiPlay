@@ -13,5 +13,5 @@ window.onload = function() {
     }
 
     // TODO ask which game was chosen and load correct one
-    load_4gewinnt(active_canvas);
+    load_tictactoe(active_canvas);
 };
