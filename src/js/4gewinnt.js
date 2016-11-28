@@ -64,16 +64,28 @@ function addListener_4gewinnt(canvas){
         var cX = Math.floor(getMousePos(canvas,evt).x/(canvas.scrollWidth/7)); // setzt cX auf einen wert zwischen 0 und 2
         var cY = Math.floor(getMousePos(canvas,evt).y/(canvas.scrollHeight/6)); // setzt cY auf einen wert zwischen 0 und 2
 
-        // Sorgt dafür das der Kreis in die letztfreie Ebene kommt
-        for(u=5;u>=0;u--)
+		// Sorgt dafür das der Kreis in die letztfreie Ebene kommt
+        if(fieldpos[cX][cY] == 0)
         {
-            if(fieldpos[cX][u] != 1 && fieldpos[cX][u] != 2)
+            for(u=5;u>=0;u--)
             {
-                if(cY<u)
-                { cY=u; }
+                if(fieldpos[cX][u] != 1 && fieldpos[cX][u] != 2)
+                {
+                    if(cY<u)
+                    { cY=u; }
+                }
             }
         }
-        console.log("X: "+cX+", Y: "+cY);
+        else
+        {
+            for(u=5;u>=0;u--)
+            {
+                if(fieldpos[cX][u] == 0 && (fieldpos[cX][u+1] == 1 || fieldpos[cX][u+1] == 2))
+                {
+                    { cY=u; }
+                }
+            }
+            console.log("X: "+cX+", Y: "+cY);
 
 
         if(turn%2==0 && fieldpos[cX][cY]==0)	//Kontrolliert ob der Zug gerade ist dann ist x dran und ob schon etwas in dem Feld ist
