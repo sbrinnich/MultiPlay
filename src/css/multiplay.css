@@ -185,7 +185,7 @@ main div .item.picture .carousel-caption{
 
 /** CHAT */
 
-.chat {
+.teamchat, .globalchat {
     border: 1px solid black;
 }
 
