@@ -1,42 +1,46 @@
 
-//Einbinden der Bilder
+function load_tictactoe(canvas) {
+    //Einbinden der Bilder
 
-var hg = new Image();		
-hg.src="img/tic-tac-toe/Tic-Tac-Toe-board.png";
+    hg = new Image();
+    hg.src = "img/tic-tac-toe/Tic-Tac-Toe-board.png";
 
-var o = new Image();
-o.src="img/tic-tac-toe/Tic-Tac-Toe-red.png";
+    o = new Image();
+    o.src = "img/tic-tac-toe/Tic-Tac-Toe-red.png";
 
-var x = new Image();
-x.src="img/tic-tac-toe/Tic-Tac-Toe-blue.png";
+    x = new Image();
+    x.src = "img/tic-tac-toe/Tic-Tac-Toe-blue.png";
 
-var bl = new Image();
-bl.src="img/Blue.png";
+    bl = new Image();
+    bl.src = "img/Blue.png";
 
-var red = new Image();
-red.src="img/Red.png";
+    red = new Image();
+    red.src = "img/Red.png";
 
-var dr = new Image();
-dr.src="img/Draw.png";
-// Ein Array für die Felder des Spiels
+    dr = new Image();
+    dr.src = "img/Draw.png";
+    // Ein Array für die Felder des Spiels
 
-var fieldpos = new Array(3);
-fieldpos[0] = [0,0,0];
-fieldpos[1] = [0,0,0];
-fieldpos[2] = [0,0,0];
+    fieldpos = new Array(3);
+    fieldpos[0] = [0, 0, 0];
+    fieldpos[1] = [0, 0, 0];
+    fieldpos[2] = [0, 0, 0];
 
-// turn steht für den Spielzug und win ist die Gewinnüberprüfung
+    // turn steht für den Spielzug und win ist die Gewinnüberprüfung
 
-var turn=0;
-var win=0;
+    turn = 0;
+    win = 0;
+
+    init_canvas_tictactoe(canvas);
+
+}
 
 // window.onload wird ausgeführt wenn das Fenster + Bilder geladen ist
-
-window.onload =function()
+function init_canvas_tictactoe(canvas)
 {
 	// muss verwendet werden um etwas im canvis verendern zu können
 
-    var canvas = document.getElementById("tic");
+
 	var c = canvas.getContext('2d');
     canvas.style.width ='100%';
     canvas.width  = canvas.scrollWidth;
@@ -53,11 +57,11 @@ window.onload =function()
 	    c.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollWidth);
 	};
 
-    addListener(canvas);
+    addListener_tictactoe(canvas);
 
-};
+}
 
-function addListener(canvas) {
+function addListener_tictactoe(canvas) {
     canvas.addEventListener('mouseup', function(evt) {
 
         var c = canvas.getContext('2d');
@@ -113,7 +117,7 @@ function addListener(canvas) {
         }
 
     },false);
-};
+}
 
 
 // Bestimmt die Maus position
@@ -127,13 +131,3 @@ function getMousePos(canvas, evt) {
         y: Math.floor((evt.clientY-rect.top)/(rect.bottom-rect.top)*canvas.height)
 	};
 }
-
-
-
-
-		
-
-
-
-	
-     
