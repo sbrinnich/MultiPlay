@@ -1,114 +1,115 @@
-//Einbinden der Bilder
 
-var hg = new Image();		
-hg.src="./img/4-gewinnt/4-Gewinnt-board.png";
+function load_4gewinnt(canvas) {
+	//Einbinden der Bilder
 
-var ro = new Image();
-ro.src="./img/4-gewinnt/4-Gewinnt-red.png";
+    hg = new Image();
+    hg.src = "./img/4-gewinnt/4-Gewinnt-board.png";
 
-var bo = new Image();
-bo.src="./img/4-gewinnt/4-Gewinnt-blue.png";
+    ro = new Image();
+    ro.src = "./img/4-gewinnt/4-Gewinnt-red.png";
 
-// Ein Array für die Felder des Spiels
+    bo = new Image();
+    bo.src = "./img/4-gewinnt/4-Gewinnt-blue.png";
 
-var fieldpos = new Array(7)
-fieldpos[0] = new Array(0,0,0,0,0,0)
-fieldpos[1] = new Array(0,0,0,0,0,0)
-fieldpos[2] = new Array(0,0,0,0,0,0)
-fieldpos[3] = new Array(0,0,0,0,0,0)
-fieldpos[4] = new Array(0,0,0,0,0,0)
-fieldpos[5] = new Array(0,0,0,0,0,0)
-fieldpos[6] = new Array(0,0,0,0,0,0)
+	// Ein Array für die Felder des Spiels
 
+    fieldpos = new Array(7);
+    fieldpos[0] = [0, 0, 0, 0, 0, 0];
+    fieldpos[1] = [0, 0, 0, 0, 0, 0];
+    fieldpos[2] = [0, 0, 0, 0, 0, 0];
+    fieldpos[3] = [0, 0, 0, 0, 0, 0];
+    fieldpos[4] = [0, 0, 0, 0, 0, 0];
+    fieldpos[5] = [0, 0, 0, 0, 0, 0];
+    fieldpos[6] = [0, 0, 0, 0, 0, 0];
 
-// turn steht für den Spielzug 
+	// turn steht für den Spielzug
 
-var turn=0;
+    turn = 0;
+
+    init_canvas_4gewinnt(canvas);
+}
 
 
 // window.onload wird ausgeführt wenn das Fenster + Bilder geladen ist
 
-window.onload =function()
+function init_canvas_4gewinnt(canvas)
 {
 	// muss verwendet werden um etwas im canvis verendern zu können
-	var canvas = document.getElementById("tic");
 	var c = canvas.getContext('2d');
-
+    canvas.style.width ='100%';
+    canvas.width  = canvas.scrollWidth;
+    canvas.style.height=canvas.scrollWidth*0.736328125+'px';
+    canvas.height = canvas.scrollWidth*0.736328125;
 
 	var hg = new Image();
-	hg.src="./img/4-gewinnt/4-Gewinnt-board.png";
-
+	hg.src="img/4-gewinnt/4-Gewinnt-board.png";
 
 	// onload wird der Hintergrund gesetzt
 	hg.onload = function(){ 
-	c.drawImage(hg, 0, 0); 
+		c.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
 	};
+
+	addListener_4gewinnt(canvas);
 
 }
 
+function addListener_4gewinnt(canvas){
+    canvas.addEventListener('mouseup', function(evt) {
+
+        var c = canvas.getContext('2d');
+
+        var u; // Variable für die Schleife
+        var hoehe=canvas.scrollHeight; // bestimmt die Hoehe
+        var breite=canvas.scrollWidth; // bestimmt die Breite
+        var cX = Math.floor(getMousePos(canvas,evt).x/(canvas.scrollWidth/7)); // setzt cX auf einen wert zwischen 0 und 2
+        var cY = Math.floor(getMousePos(canvas,evt).y/(canvas.scrollHeight/6)); // setzt cY auf einen wert zwischen 0 und 2
+
+        // Sorgt dafür das der Kreis in die letztfreie Ebene kommt
+        for(u=5;u>=0;u--)
+        {
+            if(fieldpos[cX][u] != 1 && fieldpos[cX][u] != 2)
+            {
+                if(cY<u)
+                { cY=u; }
+            }
+        }
+        console.log("X: "+cX+", Y: "+cY);
 
 
+        if(turn%2==0 && fieldpos[cX][cY]==0)	//Kontrolliert ob der Zug gerade ist dann ist x dran und ob schon etwas in dem Feld ist
+        {
+        	// 0.78125%
+            c.drawImage(bo, 0, 0, bo.width, bo.height,
+				canvas.scrollWidth/7*cX+canvas.scrollWidth*0.78125, canvas.scrollHeight/6*cY+canvas.scrollHeight*4.1168658699,
+				canvas.scrollWidth/7, canvas.scrollHeight/6);	// Zeichnet das Bild des X in das gewählte Feld
+            c.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
+            turn= turn+1;
+            fieldpos[cX][cY]=1;  // Sagt über 1 das im Feld ein X steht
+        }
+
+        else if(fieldpos[cX][cY]==0)
+        {
+            c.drawImage(ro, 0, 0, ro.width, ro.height,
+                canvas.scrollWidth/7*cX+canvas.scrollWidth*0.78125, canvas.scrollHeight/6*cY+canvas.scrollHeight*4.1168658699,
+                canvas.scrollWidth/7, canvas.scrollHeight/6);	// Zeichnet das Bild des O in das gewählte Feld
+            c.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
+            turn= turn+1;
+            fieldpos[cX][cY]=2;	// Sagt über 2 das im Feld ein O steht
+        }
+    },false);
+}
 
 // Bestimmt die Maus position
 
 function getMousePos(canvas, evt) {
 
     var rect = canvas.getBoundingClientRect();
-        
-        return {
-          x: evt.clientX - rect.left,
-          y: evt.clientY - rect.top
-        };
-  }
-      
 
-		
-
-
-window.onclick= function(getMousePos){
-		
-	var canvas = document.getElementById("tic");
-	var c = canvas.getContext('2d');
-
-	var u; // Variable für die Schleife
-	var höhe=1024; // bestimmt die
-	var breite=754; // bestimmt die Breite
-	var cX = Math.floor(getMousePos.x/(1024/7)); // setzt cX auf einen wert zwischen 0 und 2
-	var cY = Math.floor(getMousePos.y/(754/6)); // setzt cY auf einen wert zwischen 0 und 2
-
-	console.log(cX);
-	console.log(cY);
-
-		// Sorgt dafür das der Kreis in die letztfreie Ebene kommt
-		for(u=5;u>=0;u--)
-		{
-			if(fieldpos[cX][u] != 1 && fieldpos[cX][u] != 2)
-				{
-					if(cY<u)							
-						{ cY=u; }	
-				}
-		}
-
-
-			console.log(cY);
-
-
-		if(turn%2==0 && fieldpos[cX][cY]==0)	//Kontrolliert ob der Zug gerade ist dann ist x dran und ob schon etwas in dem Feld ist
-		{
-			c.drawImage(bo, (144*(cX)+8), (115*(cY)+31));	// Zeichnet das Bild des X in das gewählte Feld
-			c.drawImage(hg, 0, 0); c.drawImage(hg, 0, 0); 
-			turn= turn+1;
-			fieldpos[cX][cY]=1;  // Sagt über 1 das im Feld ein X steht
-		}
-
-		else if(fieldpos[cX][cY]==0)
-		{
-			c.drawImage(ro, (144*(cX)+8), (115*(cY)+31));	// Zeichnet das Bild des O in das gewählte Feld
-			c.drawImage(hg, 0, 0); 
-			turn= turn+1;
-			fieldpos[cX][cY]=2;	// Sagt über 2 das im Feld ein O steht
-		}
-	}
+    return {
+        x: Math.floor((evt.clientX-rect.left)/(rect.right-rect.left)*canvas.width),
+        y: Math.floor((evt.clientY-rect.top)/(rect.bottom-rect.top)*canvas.height)
+    };
+}
 
 
 
