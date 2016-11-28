@@ -13,6 +13,8 @@
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/tic_tac_toe.js"></script>
+    <script type="text/javascript" src="js/4gewinnt.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
 
@@ -61,7 +63,7 @@
 
             <!-- Game -->
             <div class="game_div col-lg-4 col-md-4 col-lg-offset-1 col-md-offset-1">
-                    <canvas id="tic"></canvas>
+                    <canvas class="hidden-sm hidden-xs"></canvas>
             </div>
 
             <!-- Team Chat -->
@@ -73,7 +75,7 @@
         <div class="row visible-sm hidden-xs" id="gamesite_sm">
             <!-- Game -->
             <div class="game_div col-sm-5 col-sm-offset-1">
-                <canvas></canvas>
+                <canvas class="visible-sm hidden-xs"></canvas>
             </div>
 
             <!-- Team Chat -->
@@ -91,7 +93,7 @@
         <div class="row visible-xs" id="gamesite_xs">
             <!-- Game -->
             <div class="game_div col-xs-10 col-xs-offset-1">
-                <canvas></canvas>
+                <canvas class="visible-xs"></canvas>
             </div>
 
             <!-- Team Chat -->

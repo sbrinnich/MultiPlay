@@ -192,7 +192,7 @@ main div .item.picture .carousel-caption{
 /** GAME-DIV **/
 
 .game_div {
-    border: 1px solid black;
+    /**border: 1px solid black;**/
 }
 
 /** Screen-specific heights on gamesite**/
@@ -238,5 +238,4 @@ main div .item.picture .carousel-caption{
     margin: 0;
     padding-top: 6em;
     padding-left: 2em;
-
 }
