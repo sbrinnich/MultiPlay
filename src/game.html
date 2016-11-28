@@ -12,8 +12,7 @@
 
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/4gewinnt.js"></script>
-</head>
+    <script type="text/javascript" src="js/tic_tac_toe.js"></script>
 </head>
 <body>
 
@@ -56,17 +55,17 @@
         <!-- LG & MD -->
         <div class="row hidden-sm hidden-xs" id="gamesite_lgmd">
             <!-- Global Chat -->
-            <div class="chat col-lg-2 col-md-2 col-lg-offset-1 col-md-offset-1">
+            <div class="globalchat col-lg-2 col-md-2 col-lg-offset-1 col-md-offset-1">
 
             </div>
 
             <!-- Game -->
             <div class="game_div col-lg-4 col-md-4 col-lg-offset-1 col-md-offset-1">
-
+                    <canvas id="tic"></canvas>
             </div>
 
             <!-- Team Chat -->
-            <div class="chat col-lg-2 col-md-2 col-lg-offset-1 col-md-offset-1">
+            <div class="teamchat col-lg-2 col-md-2 col-lg-offset-1 col-md-offset-1">
 
             </div>
         </div>
@@ -74,17 +73,16 @@
         <div class="row visible-sm hidden-xs" id="gamesite_sm">
             <!-- Game -->
             <div class="game_div col-sm-5 col-sm-offset-1">
-               
-                <canvas id="tic" height="754" width="1024" style="border: 5px solid black"></canvas>
+                <canvas></canvas>
             </div>
 
             <!-- Team Chat -->
-            <div class="chat col-sm-4 col-sm-offset-1">
+            <div class="teamchat col-sm-4 col-sm-offset-1">
 
             </div>
 
             <!-- Global Chat -->
-            <div class="chat col-sm-10 col-sm-offset-1">
+            <div class="globalchat col-sm-10 col-sm-offset-1">
 
             </div>
         </div>
@@ -93,16 +91,16 @@
         <div class="row visible-xs" id="gamesite_xs">
             <!-- Game -->
             <div class="game_div col-xs-10 col-xs-offset-1">
-
+                <canvas></canvas>
             </div>
 
             <!-- Team Chat -->
-            <div class="chat col-xs-10 col-xs-offset-1">
+            <div class="teamchat col-xs-10 col-xs-offset-1">
 
             </div>
 
             <!-- Global Chat -->
-            <div class="chat col-xs-10 col-xs-offset-1">
+            <div class="globalchat col-xs-10 col-xs-offset-1">
 
             </div>
         </div>
