@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2016-11-14" view-index="0" gantt-divider-location="694" resource-divider-location="691" version="2.8.1" locale="de">
     <description/>
-    <view zooming-state="default:6" id="gantt-chart">
+    <view zooming-state="default:4" id="gantt-chart">
         <field id="tpc1" name="ID" width="71" order="0"/>
         <field id="tpc0" name="TAG" width="67" order="1"/>
         <field id="tpd3" name="Vorgang" width="267" order="2"/>
