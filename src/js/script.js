@@ -11,10 +11,10 @@ window.onload = function() {
 };
 
 function load_canvas() {
-    var canvases = document.getElementsByTagName("canvas");
+    var canvases = $('canvas');
     active_canvas = null;
     for(var i = 0; i < canvases.length; i++){
-        if(canvases[i].style.display != "none"){
+        if(canvases.eq(i).is(':visible')){
             active_canvas = canvases[i];
             break;
         }

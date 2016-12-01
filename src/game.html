@@ -18,104 +18,109 @@
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand hidden-sm hidden-xs" href="index.html"><img src="img/Logo.png" /></a>
-                <a class="navbar-brand visible-sm visible-xs" href="index.html"><img src="img/Logo-short.png" /></a>
+<!-- Navbar -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand hidden-sm hidden-xs" href="index.html"><img src="img/Logo.png" /></a>
+            <a class="navbar-brand visible-sm visible-xs" href="index.html"><img src="img/Logo-short.png" /></a>
 
-                <!-- Team Name -->
-                <div class="navbar-text" id="navbar_team">
-                    Team <span id="team_name">...</span>
-                </div>
+            <!-- Team Name -->
+            <div class="navbar-text" id="navbar_team">
+                Team <span id="team_name">...</span>
+            </div>
 
-                <!-- Collapse Button -->
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="index.html">Startseite</a></li>
-                    <hr />
-                    <li><a href="hilfe.html">Hilfe</a></li>
-                    <li><a href="impressum.html">Impressum</a></li>
-                </ul>
-            </div>
+            <!-- Collapse Button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
-    </nav>
-
-    <!-- Header -->
-    <header></header>
-
-    <!-- Game Bereich -->
-    <main>
- 
-        <!-- LG & MD -->
-        <div class="row hidden-sm hidden-xs" id="gamesite_lgmd">
-            <!-- Global Chat -->
-            <div class="globalchat col-lg-2 col-md-2 col-lg-offset-1 col-md-offset-1">
-
-            </div>
-
-            <!-- Game -->
-            <div class="game_div col-lg-4 col-md-4 col-lg-offset-1 col-md-offset-1">
-                    <canvas class="hidden-sm hidden-xs"></canvas>
-            </div>
-
-            <!-- Team Chat -->
-            <div class="teamchat col-lg-2 col-md-2 col-lg-offset-1 col-md-offset-1">
-
-            </div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Startseite</a></li>
+                <hr />
+                <li><a href="hilfe.html">Hilfe</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
+            </ul>
         </div>
-        <!-- SM -->
-        <div class="row visible-sm hidden-xs" id="gamesite_sm">
-            <!-- Game -->
-            <div class="game_div col-sm-5 col-sm-offset-1">
-                <canvas class="visible-sm hidden-xs"></canvas>
-            </div>
+    </div>
+</nav>
 
-            <!-- Team Chat -->
-            <div class="teamchat col-sm-4 col-sm-offset-1">
+<!-- Header -->
+<header></header>
 
-            </div>
+<!-- Game Bereich -->
+<main>
 
-            <!-- Global Chat -->
-            <div class="globalchat col-sm-10 col-sm-offset-1">
-
-            </div>
+    <!-- LG & MD -->
+    <div class="row hidden-sm hidden-xs" id="gamesite_lgmd">
+        <!-- Global Chat -->
+        <div class="globalchat col-lg-2 col-md-2 col-lg-offset-1 col-md-offset-1">
+            <iframe frameBorder="0" width="100%" height="100%" src="http://www.e-chat.co/widget/room/1000?id=1000
+                &lang=en&borderc=rgb(177,193,213)&headerh=30&headerc=rgb(220,220,220)&headertc=rgb(80,80,80)&type=c">
+            </iframe>
         </div>
 
-        <!-- XS -->
-        <div class="row visible-xs" id="gamesite_xs">
-            <!-- Game -->
-            <div class="game_div col-xs-10 col-xs-offset-1">
-                <canvas class="visible-xs"></canvas>
-            </div>
-
-            <!-- Team Chat -->
-            <div class="teamchat col-xs-10 col-xs-offset-1">
-
-            </div>
-
-            <!-- Global Chat -->
-            <div class="globalchat col-xs-10 col-xs-offset-1">
-
-            </div>
+        <!-- Game -->
+        <div class="game_div col-lg-4 col-md-4 col-lg-offset-1 col-md-offset-1">
+            <canvas class="hidden-sm hidden-xs"></canvas>
         </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <span class="col-lg-3 col-md-3 col-sm-3 col-xs-12">&copy; MultiPlay Team</span>
-            <a href="hilfe.html" class="col-lg-1 col-md-1 col-sm-2 hidden-xs col-lg-offset-6 col-md-offset-6 col-sm-offset-3">Hilfe</a>
-            <a href="impressum.html" class="col-lg-1 col-md-1 col-sm-2 hidden-xs">Impressum</a>
+        <!-- Team Chat -->
+        <div class="teamchat col-lg-2 col-md-2 col-lg-offset-1 col-md-offset-1">
+            <iframe frameBorder="0" width="100%" height="100%" src="http://www.e-chat.co/widget/room/1000?id=1000
+                &lang=en&borderc=rgb(177,193,213)&headerh=30&headerc=rgb(220,220,220)&headertc=rgb(80,80,80)&type=c">
+            </iframe>
+
         </div>
-    </footer>
+    </div>
+    <!-- SM -->
+    <div class="row visible-sm hidden-xs" id="gamesite_sm">
+        <!-- Game -->
+        <div class="game_div col-sm-5 col-sm-offset-1">
+            <canvas class="visible-sm hidden-xs"></canvas>
+        </div>
+
+        <!-- Team Chat -->
+        <div class="teamchat col-sm-4 col-sm-offset-1">
+
+        </div>
+
+        <!-- Global Chat -->
+        <div class="globalchat col-sm-10 col-sm-offset-1">
+
+        </div>
+    </div>
+
+    <!-- XS -->
+    <div class="row visible-xs" id="gamesite_xs">
+        <!-- Game -->
+        <div class="game_div col-xs-10 col-xs-offset-1">
+            <canvas class="visible-xs"></canvas>
+        </div>
+
+        <!-- Team Chat -->
+        <div class="teamchat col-xs-10 col-xs-offset-1">
+
+        </div>
+
+        <!-- Global Chat -->
+        <div class="globalchat col-xs-10 col-xs-offset-1">
+
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <span class="col-lg-3 col-md-3 col-sm-3 col-xs-12">&copy; MultiPlay Team</span>
+        <a href="hilfe.html" class="col-lg-1 col-md-1 col-sm-2 hidden-xs col-lg-offset-6 col-md-offset-6 col-sm-offset-3">Hilfe</a>
+        <a href="impressum.html" class="col-lg-1 col-md-1 col-sm-2 hidden-xs">Impressum</a>
+    </div>
+</footer>
 
 </body>
 </html>
