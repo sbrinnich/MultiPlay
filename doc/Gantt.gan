@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2016-11-14" view-index="0" gantt-divider-location="694" resource-divider-location="691" version="2.8.1" locale="de">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2016-11-14" view-index="0" gantt-divider-location="634" resource-divider-location="691" version="2.8.1" locale="de">
     <description/>
     <view zooming-state="default:4" id="gantt-chart">
-        <field id="tpc1" name="ID" width="71" order="0"/>
-        <field id="tpc0" name="TAG" width="67" order="1"/>
-        <field id="tpd3" name="Vorgang" width="267" order="2"/>
-        <field id="tpd4" name="Anfang" width="104" order="3"/>
-        <field id="tpd5" name="Ende" width="104" order="4"/>
-        <field id="tpc2" name="PH" width="62" order="5"/>
+        <field id="tpc1" name="ID" width="44" order="0"/>
+        <field id="tpc0" name="TAG" width="92" order="1"/>
+        <field id="tpd3" name="Vorgang" width="279" order="2"/>
+        <field id="tpd4" name="Anfang" width="78" order="3"/>
+        <field id="tpd5" name="Ende" width="82" order="4"/>
+        <field id="tpc2" name="PH" width="40" order="5"/>
         <timeline><![CDATA[79]]></timeline>
         <option id="color.recent"><![CDATA[#ff0000 #ff0033]]></option>
     </view>
