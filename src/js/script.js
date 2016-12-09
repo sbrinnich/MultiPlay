@@ -41,3 +41,19 @@ function findGetParameter(parameterName) {
     }
     return result;
 }
+
+function db_call(type,arg) {
+    $.ajax({
+        type: "POST",
+        url: 'php/db_con.php',
+        dataType: 'json',
+        data: {arguments: [type, arg]}
+    }).done(function (obj) {
+        if( !('error' in obj) ) {
+            console.log(obj.results);
+            return obj.results;
+        }else {
+            return obj.error;
+        }
+    });
+}
