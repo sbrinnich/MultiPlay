@@ -2,6 +2,7 @@
 
 $results = array();
 
+if( !isset($_POST['type']) ) { $results['error'] = 'No type!'; }
 if( !isset($_POST['arguments']) ) { $results['error'] = 'No arguments!'; }
 
 if( !isset($results['error']) ) {
@@ -20,16 +21,10 @@ if( !isset($results['error']) ) {
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    switch($_POST['arguments'][0]) {
-        // DONT TOUCH!!!
-        //if (mysqli_query($conn, $sql)) {
-        //$results['results'] = 'success';
-        //}else {
-        //$results['error'] = mysqli_error($conn);
-        //}
+    switch($_POST['type']) {
         case 'get':
             // sql statement
-            $sql = "SELECT * FROM " . $_POST['arguments'][1];
+            $sql = "SELECT * FROM " . $_POST['arguments'];
 
             $res = mysqli_query($conn, $sql);
 
@@ -41,6 +36,33 @@ if( !isset($results['error']) ) {
                 }
             } else {
                 $results['results'] = array();
+            }
+            break;
+        case 'insert':
+            $sql = "";
+            switch($_POST['arguments'][0]){
+                case '4-gewinnt':
+                    $sql = "INSERT INTO '4-gewinnt'(posx, posy, teamname)
+                      VALUES (".$_POST['arguments'][1][0].",".$_POST['arguments'][1][1].",".$_POST['arguments'][1][2].")";
+                    break;
+                case '4-gewinnt-temp':
+                    $sql = "INSERT INTO '4-gewinnt-temp'(posx)
+                      VALUES (".$_POST['arguments'][1][0].")";
+                    break;
+                case 'tic-tac-toe':
+                    $sql = "INSERT INTO 'tic-tac-toe'(posx, posy, teamname)
+                      VALUES (".$_POST['arguments'][1][0].",".$_POST['arguments'][1][1].",".$_POST['arguments'][1][2].")";
+                    break;
+                case 'tic-tac-toe-temp':
+                    $sql = "INSERT INTO 'tic-tac-toe-temp'(posx, posy)
+                      VALUES (".$_POST['arguments'][1][0].",".$_POST['arguments'][1][1].")";
+                    break;
+            }
+
+            if (mysqli_query($conn, $sql)) {
+                $results['results'] = 'success';
+            }else {
+                $results['error'] = mysqli_error($conn);
             }
             break;
     }

@@ -42,15 +42,20 @@ function findGetParameter(parameterName) {
     return result;
 }
 
-function db_call(type,arg) {
+/**
+ * Retrieve/Save data from/to database
+ * @param type either get or insert
+ * @param args if type is get: name of requested view in database <br />
+ *              if type is insert: array with following information: [name_of_table, [n_values]]
+ */
+function db_call(type,args) {
     $.ajax({
         type: "POST",
         url: 'php/db_con.php',
         dataType: 'json',
-        data: {arguments: [type, arg]}
+        data: {type: type, arguments: args}
     }).done(function (obj) {
         if( !('error' in obj) ) {
-            console.log(obj.results);
             return obj.results;
         }else {
             return obj.error;
