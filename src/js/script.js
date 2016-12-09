@@ -44,9 +44,10 @@ function findGetParameter(parameterName) {
 
 /**
  * Retrieve/Save data from/to database
- * @param type either get or insert
+ * @param type either get or insert or delete
  * @param args if type is get: name of requested view in database <br />
- *              if type is insert: array with following information: [name_of_table, [n_values]]
+ *              if type is insert: array with following information: [name_of_table, [n_values]] <br />
+ *              if typ is delete: name of table
  */
 function db_call(type,args) {
     $.ajax({

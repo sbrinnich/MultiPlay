@@ -65,6 +65,22 @@ if( !isset($results['error']) ) {
                 $results['error'] = mysqli_error($conn);
             }
             break;
+        case 'delete':
+            if($_POST['arguments'] == 'tic-tac-toe' ||
+                $_POST['arguments'] == 'tic-tac-toe-temp' ||
+                $_POST['arguments'] == '4-gewinnt' ||
+                $_POST['arguments'] == '4-gewinnt-temp'){
+                $sql = "DELETE FROM ".$_POST['arguments'];
+
+                if (mysqli_query($conn, $sql)) {
+                    $results['results'] = 'success';
+                }else {
+                    $results['error'] = mysqli_error($conn);
+                }
+            }else{
+                $results['error'] = 'Wrong arguments!';
+            }
+            break;
     }
 
     mysqli_close($conn);
