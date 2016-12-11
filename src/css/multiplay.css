@@ -161,6 +161,27 @@ main div .item.picture .carousel-caption{
     margin-top: 30px;
 }
 
+/** MODAL **/
+
+.modal-team-button {
+    display: inline-block;
+    height: 100px;
+    width: 49%;
+    text-align: center;
+    padding: 15% 0 15% 0;
+    border-radius: 10%;
+}
+
+.team-blue{
+    background-color: #0E78AD;
+    color: white;
+}
+
+.team-red{
+    background-color: #DB0E1C;
+    color: white;
+}
+
 /** FOOTER **/
 
 .footer {

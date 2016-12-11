@@ -1,4 +1,3 @@
-
 window.onload = function() {
     var gametype = findGetParameter("name");
     if(gametype == "tictactoe"){
@@ -40,4 +39,8 @@ function findGetParameter(parameterName) {
         if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
     }
     return result;
+}
+
+function selectgame(targeturl){
+    document.getElementById("lets-play-btn").setAttribute("href", "game.html" + targeturl);
 }

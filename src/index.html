@@ -36,8 +36,8 @@
             <ul class="nav navbar-nav">
                 <li><a href="index.html">Startseite</a></li>
                 <hr/>
-                <li><a href="game.html?name=tictactoe">Tic-Tac-Toe</a></li>
-                <li><a href="game.html?name=4gewinnt">4 - Gewinnt</a></li>
+                <li><a onclick="selectgame('?name=tictactoe')" data-toggle="modal" data-target="#myModal" href="">Tic-Tac-Toe</a></li>
+                <li><a onclick="selectgame('?name=4gewinnt')" data-toggle="modal" data-target="#myModal" href="">4 - Gewinnt</a></li>
                 <hr/>
                 <li class="visible-xs"><a href="hilfe.html">Hilfe</a></li>
                 <li class="visible-xs"><a href="impressum.html">Impressum</a></li>
@@ -61,17 +61,15 @@
                         <div class="carousel-inner" role="listbox">
                             <!-- jeder div-container ist ein Bild im Karussel -->
                             <div class="item active picture">
-                                <a href="game.html?name=4gewinnt"><img src="img/4-Gewinnt-preview.png" alt="4-gewinnt"/></a>
+                                <a onclick="selectgame('?name=4gewinnt')" data-toggle="modal" data-target="#myModal" href=""><img src="img/4-Gewinnt-preview.png" alt="4-gewinnt"/></a>
                                 <div class="carousel-caption hidden-xs hidden-sm">
                                     <h1>4 - Gewinnt</h1>
                                     <p>
-                                        4-Gewinnt ist ein sehr weit verbreitetes Gesellschaftsspiel für 2 Parteien. Es
-                                        geht darum, seine Steine so
-                                        zu setzen, damit man 4 gleiche Steine in
-                                        eine Reihe bekommt. Egal ob vertikal, horizontal oder diagonal, wenn du die 4er
-                                        Reihe hast, hat dein Team
-                                        gewonnen! Klicke hier um ein Team auszuwählen und
-                                        mit der Comunity zu spielen!
+                                        4-Gewinnt ist ein sehr weit verbreitetes Gesellschaftsspiel für 2 Parteien.
+                                        Es geht darum, seine Steine so zu setzen, damit man 4 gleiche Steine in
+                                        eine Reihe bekommt. Egal ob vertikal, horizontal oder diagonal,
+                                        wenn du die 4er Reihe hast, hat dein Team gewonnen!
+                                        Klicke hier um ein Team auszuwählen und mit der Comunity zu spielen!
                                     </p>
                                 </div>
                                 <div class="carousel-caption visible-xs visible-sm">
@@ -79,7 +77,7 @@
                                 </div>
                             </div>
                             <div class="item picture">
-                                <a href="game.html?name=tictactoe"><img src="img/Tic-Tac-Toe-preview.png"
+                                <a onclick="selectgame('?name=tictactoe')" data-toggle="modal" data-target="#myModal" href=""><img src="img/Tic-Tac-Toe-preview.png"
                                                                         alt="tic-tac-toe"/></a>
                                 <div class="carousel-caption hidden-sm hidden-xs">
                                     <h1>Tic - Tac - Toe</h1>
@@ -119,5 +117,33 @@
         <a href="impressum.html" class="col-lg-1 col-md-1 col-sm-2 hidden-xs">Impressum</a>
     </div>
 </footer>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Teamwahl</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modal-team-button team-blue">
+                    <p>Blau</p>
+                </div>
+                <div class="modal-team-button team-red">
+                    <p>Rot</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="text-center">
+                    <a id="lets-play-btn" href="game.html"><button type="button" class="btn btn-lg btn-primary">Jetzt spielen!</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
