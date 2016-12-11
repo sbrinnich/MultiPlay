@@ -78,6 +78,10 @@ function db_call(type,args) {
     });
 }
 
+/**
+ * Change targeturl of lets-play-btn to a url of the selected game
+ */
+
 function selectgame(targeturl){
     document.getElementById("lets-play-btn").setAttribute("href", "game.html" + targeturl);
 }
