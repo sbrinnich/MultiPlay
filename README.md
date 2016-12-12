@@ -49,4 +49,10 @@ Selina Brinnich
 User: thiago.gumhold@gmail.com
 PW: fF0nH,%N`g=^pmc+
 
+###DB-Users:
+User: multipl4_dbuser
+PW: fF0nH,%N`g=^pmc+
+User: multipl4_dbguest
+PW: LOLoBdaSjemanDerräT?
+
 ###Email: info@multiplay.website

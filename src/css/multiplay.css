@@ -172,6 +172,18 @@ main div .item.picture .carousel-caption{
     border-radius: 10%;
 }
 
+.radio{
+    padding: 10% 0 10% 0;
+}
+
+.teamradios input[type=radio]{
+    display:none
+}
+
+.teamradios input[type=radio]:checked + .modal-team-button{
+    border: 3px solid black;
+}
+
 .team-blue{
     background-color: #0E78AD;
     color: white;

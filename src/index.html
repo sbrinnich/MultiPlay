@@ -36,8 +36,8 @@
             <ul class="nav navbar-nav">
                 <li><a href="index.html">Startseite</a></li>
                 <hr/>
-                <li><a onclick="selectgame('?name=tictactoe')" data-toggle="modal" data-target="#myModal" href="">Tic-Tac-Toe</a></li>
-                <li><a onclick="selectgame('?name=4gewinnt')" data-toggle="modal" data-target="#myModal" href="">4 - Gewinnt</a></li>
+                <li><a onclick="selectgame('tictactoe')" data-toggle="modal" data-target="#myModal" href="">Tic-Tac-Toe</a></li>
+                <li><a onclick="selectgame('4gewinnt')" data-toggle="modal" data-target="#myModal" href="">4 - Gewinnt</a></li>
                 <hr/>
                 <li class="visible-xs"><a href="hilfe.html">Hilfe</a></li>
                 <li class="visible-xs"><a href="impressum.html">Impressum</a></li>
@@ -62,7 +62,7 @@
                         <div class="carousel-inner" role="listbox">
                             <!-- jeder div-container ist ein Bild im Karussel -->
                             <div class="item active picture">
-                                <a onclick="selectgame('?name=4gewinnt')" data-toggle="modal" data-target="#myModal" href=""><img src="img/4-Gewinnt-preview.png" alt="4-gewinnt"/></a>
+                                <a onclick="selectgame('4gewinnt')" data-toggle="modal" data-target="#myModal" href=""><img src="img/4-Gewinnt-preview.png" alt="4-gewinnt"/></a>
                                 <div class="carousel-caption hidden-xs hidden-sm">
                                     <h1>4 - Gewinnt</h1>
                                     <p>
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <div class="item picture">
-                                <a onclick="selectgame('?name=tictactoe')" data-toggle="modal" data-target="#myModal" href=""><img src="img/Tic-Tac-Toe-preview.png"
+                                <a onclick="selectgame('tictactoe')" data-toggle="modal" data-target="#myModal" href=""><img src="img/Tic-Tac-Toe-preview.png"
                                                                         alt="tic-tac-toe"/></a>
                                 <div class="carousel-caption hidden-sm hidden-xs">
                                     <h1>Tic - Tac - Toe</h1>
@@ -129,11 +129,11 @@
                 <h4 class="modal-title">Teamwahl</h4>
             </div>
             <div class="modal-body">
-                <div class="modal-team-button team-blue">
-                    <p>Blau</p>
-                </div>
-                <div class="modal-team-button team-red">
-                    <p>Rot</p>
+                <div class="teamradios">
+                    <input type="radio" name="modal-radios" value="Blau" id="team-blue" checked="checked" />
+                    <label class="modal-team-button team-blue" for="team-blue" onclick="selectteam('Blau')" >Blau</label>
+                    <input type="radio" name="modal-radios" value="Rot" id="team-red" />
+                    <label class="modal-team-button team-red" for="team-red" onclick="selectteam('Rot')" >Rot</label>
                 </div>
             </div>
             <div class="modal-footer">

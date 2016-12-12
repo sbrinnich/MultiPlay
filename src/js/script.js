@@ -1,14 +1,26 @@
+//Global values
+var team = "Blau";
+
 // Start game depending on get-parameter 'name' which should contain the game-name
 window.onload = function() {
     var gametype = findGetParameter("name");
     if(gametype == "tictactoe"){
-        //TODO ask for team
+        play_as_team();
         play_tictactoe();
     }else if(gametype == "4gewinnt"){
-        //TODO ask for team
+        play_as_team();
         play_4gewinnt();
     }
 };
+
+//Play as Team-Member depending on get-parameter 'team' which should contain the team-name
+function play_as_team(){
+    var teamname = findGetParameter("team"); //get parameter team
+    team = teamname; //save teamname in global variable
+    document.getElementById("team_name").innerHTML = teamname;
+    return team; //return team if needed later
+}
+
 
 /**
  * Load currently active canvas into global variable active_canvas(changes depending on screen-size)
@@ -79,9 +91,39 @@ function db_call(type,args) {
 }
 
 /**
- * Change targeturl of lets-play-btn to a url of the selected game
+ * Change target url of lets-play-btn to a url of the selected game
  */
 
 function selectgame(targeturl){
-    document.getElementById("lets-play-btn").setAttribute("href", "game.html" + targeturl);
+    //get target from link in lets play button
+    var target = document.getElementById("lets-play-btn").getAttribute("href");
+
+    //if game is not set already add it to target url
+    if (target.indexOf("?name=") == -1){
+        document.getElementById("lets-play-btn").setAttribute("href", (target + "?name=" + targeturl));
+    }
+    else
+    {
+        target = target.substring(0, target.indexOf("?name=")); //cut off unnecessary attributes
+        document.getElementById("lets-play-btn").setAttribute("href", (target + "?name=" + targeturl));
+    }
+
+    //set default Team that is checked at the beginning of modal dialoque.
+    selectteam('Blau');
+}
+
+
+function selectteam(targeturl){
+    //get target from link in lets play button
+    var target = document.getElementById("lets-play-btn").getAttribute("href");
+
+    //if team is not set already add it to target url
+    if (target.indexOf("&team=") == -1){
+        document.getElementById("lets-play-btn").setAttribute("href", (target + "&team=" + targeturl));
+    }
+    else
+    {
+        target = target.substring(0, target.indexOf("&team=")); //cut off unnecessary attributes
+        document.getElementById("lets-play-btn").setAttribute("href", (target + "&team=" + targeturl));
+    }
 }
