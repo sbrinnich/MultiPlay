@@ -94,10 +94,17 @@ function db_call(type,args,callback) {
 
 /**
  * Change target url of lets-play-btn to a url of the selected game
+ * @param targeturl is the name of the game that should be played.
+ *                  it has to match the name in the database.
  */
 
 function selectgame(targeturl){
-    //get target from link in lets play button
+    //Before selecting the game we need to know which teams are going to play it, and show them in the modal
+    //get all teams from Database and make the right buttons out of them, eventually in the future different games need different teams
+    db_call('get','all_teams',getteams);
+
+    //while teambuttons are being created, change the targeturl of button
+    //get current target from link in lets play button
     var target = document.getElementById("lets-play-btn").getAttribute("href");
 
     //if game is not set already add it to target url
@@ -109,12 +116,43 @@ function selectgame(targeturl){
         target = target.substring(0, target.indexOf("?name=")); //cut off unnecessary attributes
         document.getElementById("lets-play-btn").setAttribute("href", (target + "?name=" + targeturl));
     }
-
-    //set default Team that is checked at the beginning of modal dialoque.
-    selectteam('Blau');
 }
 
+/**
+ * Change target url of lets-play-btn to a url of the selected team
+ * @param dbresponse is the response from the database that contains team informations
+ */
+function getteams(dbresponse){
 
+    var newbuttons = "";
+
+    //for each team make a button
+    for(i = 0; i < dbresponse.length; i++)
+    {
+        //input (type = radio)
+        newbuttons += "<input type='radio' name='modal-radios' value='" + dbresponse[i].name + "'";
+        if(i == 0){
+            newbuttons +=  " checked='checked'"; //first button is checked at the beginning
+        }
+        newbuttons +=  " id='team-" + dbresponse[i].name + "' /> ";
+        //label
+        newbuttons += "<label class='modal-team-button' for='team-" + dbresponse[i].name + "'";
+        newbuttons += " onclick='selectteam(" + '"' + dbresponse[i].name + '"' + ")'";
+        newbuttons += "style='background-color: " + dbresponse[i].color + "' >";
+        newbuttons += dbresponse[i].name + "</label>";
+    }
+    //Add buttons to wrapper
+    document.getElementById("teamradios").innerHTML = newbuttons;
+
+    //set default Team that is checked at the beginning of modal dialoque.
+    selectteam(dbresponse[0].name);
+}
+
+/**
+ * Change target url of lets-play-btn to a url of the selected team
+ * @param targeturl is the name of the team that should be played.
+ *                  it has to match the name in the database.
+ */
 function selectteam(targeturl){
     //get target from link in lets play button
     var target = document.getElementById("lets-play-btn").getAttribute("href");
