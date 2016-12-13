@@ -46,6 +46,7 @@ function init_canvas_tictactoe(canvas)
     canvas.width  = canvas.scrollWidth;
     canvas.style.height=canvas.scrollWidth+'px';
     canvas.height = canvas.scrollWidth;
+    canvas.parentNode.style.height = canvas.scrollWidth+'px';
 
 
 	var hg = new Image();

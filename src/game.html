@@ -49,24 +49,19 @@
     </div>
 </nav>
 
-<!-- Header -->
-<header></header>
-
 <!-- Game Bereich -->
 <main>
 
     <!-- LG & MD -->
     <div class="row hidden-sm hidden-xs" id="gamesite_lgmd">
-        <!-- Global Chat -->
-
         <!-- Game -->
         <div class="game_div col-lg-5 col-md-5 col-lg-offset-1 col-md-offset-1">
             <canvas class="hidden-sm hidden-xs"></canvas>
         </div>
 
-        <!-- Team Chat -->
+        <!-- Global Chat -->
         <div class="globalchat col-lg-3 col-md-3 col-lg-offset-1 col-md-offset-1">
-            <iframe frameBorder="0" width="100%" height="100%" src="http://www.e-chat.co/widget/room/1000?id=1000
+            <iframe name="chat" frameBorder="0" width="100%" height="100%" src="http://www.e-chat.co/widget/room/1000?id=1000
                 &lang=en&borderc=rgb(177,193,213)&headerh=30&headerc=rgb(220,220,220)&headertc=rgb(80,80,80)&type=c">
             </iframe>
         </div>
@@ -79,9 +74,6 @@
         <div class="game_div col-sm-6 col-sm-offset-1">
             <canvas class="visible-sm hidden-xs"></canvas>
         </div>
-
-        <!-- Team Chat -->
-
 
         <!-- Global Chat -->
         <div class="globalchat col-sm-4 col-sm-offset-1">
@@ -98,12 +90,14 @@
             <canvas class="visible-xs"></canvas>
         </div>
 
-        <!-- Team Chat -->
-
-
         <!-- Global Chat -->
-
+        <div class="globalchat col-xs-10 col-xs-offset-1">
+            <iframe name="chat" frameBorder="0" width="100%" height="100%" src="http://www.e-chat.co/widget/room/1000?id=1000
+                &lang=en&borderc=rgb(177,193,213)&headerh=30&headerc=rgb(220,220,220)&headertc=rgb(80,80,80)&type=c">
+            </iframe>
+        </div>
     </div>
+    <div class="push"></div>
 </main>
 
 <!-- Footer -->

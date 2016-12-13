@@ -74,8 +74,10 @@ function findGetParameter(parameterName) {
  * @param args if type is get: name of requested view in database <br />
  *              if type is insert: array with following information: [name_of_table, [n_values]] <br />
  *              if typ is delete: name of table
+ * @param callback function, which should be executed as soon as ajax call gets response
+ *                 (response is passed as parameter to callback function)
  */
-function db_call(type,args) {
+function db_call(type,args,callback) {
     $.ajax({
         type: "POST",
         url: 'php/db_con.php',
@@ -83,9 +85,9 @@ function db_call(type,args) {
         data: {type: type, arguments: args}
     }).done(function (obj) {
         if( !('error' in obj) ) {
-            return obj.results;
+            callback(obj.results);
         }else {
-            return obj.error;
+            callback(obj.error);
         }
     });
 }

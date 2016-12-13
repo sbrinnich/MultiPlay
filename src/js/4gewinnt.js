@@ -40,6 +40,7 @@ function init_canvas_4gewinnt(canvas)
     canvas.width  = canvas.scrollWidth;
     canvas.style.height=canvas.scrollWidth*0.736328125+'px';
     canvas.height = canvas.scrollWidth*0.736328125;
+    canvas.parentNode.style.height = canvas.scrollWidth*0.736328125+'px';
 
 	// onload wird der Hintergrund gesetzt
 	hg.onload = function(){ 
