@@ -36,8 +36,16 @@
             <ul class="nav navbar-nav">
                 <li><a href="index.html">Startseite</a></li>
                 <hr/>
-                <li><a onclick="selectgame('tictactoe')" data-toggle="modal" data-target="#myModal" href="">Tic-Tac-Toe</a></li>
-                <li><a onclick="selectgame('4gewinnt')" data-toggle="modal" data-target="#myModal" href="">4 - Gewinnt</a></li>
+                <li>
+                    <a onclick="selectgame('tictactoe')" data-toggle="modal" data-target="#teamchooseModal" href="">
+                        Tic-Tac-Toe
+                    </a>
+                </li>
+                <li>
+                    <a onclick="selectgame('4gewinnt')" data-toggle="modal" data-target="#teamchooseModal" href="">
+                        4 - Gewinnt
+                    </a>
+                </li>
                 <hr/>
                 <li class="visible-xs"><a href="hilfe.html">Hilfe</a></li>
                 <li class="visible-xs"><a href="impressum.html">Impressum</a></li>
@@ -56,15 +64,18 @@
                         <div class="carousel-inner" role="listbox">
                             <!-- jeder div-container ist ein Bild im Karussel -->
                             <div class="item active picture">
-                                <a onclick="selectgame('4gewinnt')" data-toggle="modal" data-target="#myModal" href=""><img src="img/4-Gewinnt-preview.png" alt="4-gewinnt"/></a>
+                                <a onclick="selectgame('4gewinnt')" data-toggle="modal"
+                                   data-target="#teamchooseModal" href="">
+                                    <img src="img/4-Gewinnt-preview.png" alt="4-gewinnt"/>
+                                </a>
                                 <div class="carousel-caption hidden-xs hidden-sm">
                                     <h1>4 - Gewinnt</h1>
                                     <p>
                                         4-Gewinnt ist ein sehr weit verbreitetes Gesellschaftsspiel für 2 Parteien.
-                                        Es geht darum, seine Steine so zu setzen, damit man 4 gleiche Steine in
+                                        Es geht darum seine Steine so zu setzen, dass man 4 gleiche Steine in
                                         eine Reihe bekommt. Egal ob vertikal, horizontal oder diagonal,
                                         wenn du die 4er Reihe hast, hat dein Team gewonnen!
-                                        Klicke hier um ein Team auszuwählen und mit der Comunity zu spielen!
+                                        Klicke hier um einem Team beizutreten und mit der Community zu spielen!
                                     </p>
                                 </div>
                                 <div class="carousel-caption visible-xs visible-sm">
@@ -72,16 +83,17 @@
                                 </div>
                             </div>
                             <div class="item picture">
-                                <a onclick="selectgame('tictactoe')" data-toggle="modal" data-target="#myModal" href=""><img src="img/Tic-Tac-Toe-preview.png"
-                                                                        alt="tic-tac-toe"/></a>
+                                <a onclick="selectgame('tictactoe')" data-toggle="modal"
+                                   data-target="#teamchooseModal" href="">
+                                    <img src="img/Tic-Tac-Toe-preview.png" alt="tic-tac-toe"/>
+                                </a>
                                 <div class="carousel-caption hidden-sm hidden-xs">
                                     <h1>Tic - Tac - Toe</h1>
                                     <p>
                                         Tic-Tac-Toe ist ein sehr weit verbreitetes Gesellschaftsspiel für 2 Parteien.
                                         Es geht darum 3 gleiche Symbole in einer Reihe (vertikal, horizontal oder
-                                        diagonal)zu bekommen.
-                                        Parteien kommen abwechselnd zum zug. Klicke hier um ein Team zu betreten und mit
-                                        der Comunity zu spielen!
+                                        diagonal) zu bekommen. Die Parteien kommen abwechselnd zum Zug.
+                                        Klicke hier um einem Team beizutreten und mit der Community zu spielen!
                                     </p>
                                 </div>
                                 <div class="carousel-caption visible-xs visible-sm">
@@ -89,7 +101,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Zurück und Vor-Buttons im Karussel-Objekt -->
+                        <!-- Zurueck und Vor-Buttons im Karussel-Objekt -->
                         <a class="left carousel-control" href="#my-slider" role="button" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                             <span class="sr-only">Zur&uuml;ck</span>
@@ -115,8 +127,8 @@
 </footer>
 
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
+<!-- Modal for choosing a team -->
+<div class="modal fade" id="teamchooseModal" role="dialog">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
@@ -125,12 +137,16 @@
             </div>
             <div class="modal-body" id="modal-body">
                 <div id="teamradios">
-                    <!-- buttons are generated by javascript... I hope -->
+                    <!-- buttons are generated by javascript -->
                 </div>
             </div>
             <div class="modal-footer">
                 <div class="text-center">
-                    <a id="lets-play-btn" href="game.html"><button type="button" class="btn btn-lg btn-primary">Jetzt spielen!</button></a>
+                    <a id="lets-play-btn" href="game.html">
+                        <button type="button" class="btn btn-lg btn-primary">
+                            Jetzt spielen!
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

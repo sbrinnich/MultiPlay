@@ -50,7 +50,8 @@ nav div, a.navbar-brand {
 }
 
 a.navbar-brand img {
-    max-height: 100%;
+    max-height: 95%;
+    padding-top: 1%;
     width: auto;
 }
 
@@ -163,7 +164,7 @@ main div .item.picture .carousel-caption{
     margin-top: 30px;
 }
 
-/** MODAL **/
+/** TEAM CHOOSE MODAL **/
 
 .modal-team-button {
     color: white;
