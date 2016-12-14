@@ -22,7 +22,7 @@ function viergewinnt_getYPos($xpos, $field){
     return null;
 }
 
-function viergewinnt_randomTurn(){
+function viergewinnt_randomTurn($field){
     // TODO implement
     return null;
 }

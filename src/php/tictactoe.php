@@ -1,7 +1,17 @@
 <?php
 
-function tictactoe_randomTurn(){
-    //TODO implement
+function tictactoe_randomTurn($field){
+    //TODO make more random
+    $turn = array();
+    for($i = 0; $i < 3; $i++){
+        $turn['posy'] = $i;
+        for($j = 0; $j < 3; $j++){
+            $turn['posx'] = $j;
+            if($field[$turn['posy']][$turn['posx']] == null){
+                return $turn;
+            }
+        }
+    }
     return null;
 }
 

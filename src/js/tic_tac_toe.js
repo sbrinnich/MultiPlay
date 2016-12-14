@@ -62,6 +62,12 @@ function init_canvas_tictactoe(canvas)
 
 }
 
+function draw_image_tictactoe(canvas, image, posx, posy){
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(image, 0, 0, image.height, image.width,
+        (canvas.scrollWidth/3*posx), (canvas.scrollWidth/3*posy), canvas.scrollWidth/3, canvas.scrollWidth/3);
+}
+
 function addListener_tictactoe(canvas) {
     canvas.addEventListener('mouseup', function(evt) {
 
@@ -80,14 +86,14 @@ function addListener_tictactoe(canvas) {
         {
             if(turn%2==0 && fieldpos[cX][cY]==0)	//Kontrolliert ob der Zug gerade ist dann ist x dran und ob schon etwas in dem Feld ist
             {
-                c.drawImage(x, 0, 0, x.height, x.width, (g/3*cX), (g/3*cY), canvas.scrollWidth/3, canvas.scrollWidth/3);	// Zeichnet das Bild des X in das gewählte Feld
+                draw_image_tictactoe(canvas, x, cX, cY);	// Zeichnet das Bild des X in das gewählte Feld
                 turn= turn+1;
                 fieldpos[cX][cY]=1;  // Sagt über 1 das im Feld ein X steht
             }
 
             else if(fieldpos[cX][cY]==0)
             {
-                c.drawImage(o, 0, 0, o.height, o.width, (g/3*cX), (g/3*cY), canvas.scrollWidth/3, canvas.scrollWidth/3);	// Zeichnet das Bild des O in das gewählte Feld
+                draw_image_tictactoe(canvas, o, cX, cY);	// Zeichnet das Bild des O in das gewählte Feld
                 turn= turn+1;
                 fieldpos[cX][cY]=2;	// Sagt über 2 das im Feld ein O steht
             }

@@ -19,16 +19,17 @@ function time_update(){
 
     //4 GEWINNT
     $viergewinnttemp = db_con('get', '4-gewinnt-temp');
+    $field = viergewinnt_getFieldArray(db_con('get', '4gewinnt_sorted'));
     // If nobody voted do random turn
     if(empty($viergewinnttemp)){
-        $next_turn = get_random_turn('4GEWINNT');
+        $next_turn = get_random_turn('4GEWINNT', $field);
     }else{
         $next_turn = db_con('get', '4gewinnt_chosencount')[0]['posx'];
         // Read possible y position for chosen turn
-        $ypos = viergewinnt_getYPos($next_turn, viergewinnt_getFieldArray(db_con('get', '4gewinnt_sorted')));
+        $ypos = viergewinnt_getYPos($next_turn, $field);
         if($ypos == null){
             // If no y position was found => turn not possible => do random turn
-            $next_turn = get_random_turn('4GEWINNT');
+            $next_turn = get_random_turn('4GEWINNT', $field);
         }else{
             $next_turn = array("posx" => $next_turn, "posy" => $ypos);
         }
@@ -39,14 +40,14 @@ function time_update(){
 
     // TIC TAC TOE
     $tictactoetemp = db_con('get', 'tic-tac-toe-temp');
+    $field = tictactoe_getFieldArray(db_con('get','tictactoe_sorted'));
     if(empty($tictactoetemp)){
-        $next_turn = get_random_turn('TICTACTOE');
+        $next_turn = get_random_turn('TICTACTOE', $field);
     }else{
         $next_turn = db_con('get', 'tictactoe_chosencount')[0];
-        $field = tictactoe_getFieldArray(db_con('get','tictactoe_sorted'));
         // If invalid turn do random turn
         if($field[$next_turn['posy']][$next_turn['posx']] != null){
-            $next_turn = get_random_turn('TICTACTOE');
+            $next_turn = get_random_turn('TICTACTOE', $field);
         }
     }
     db_con('insert', array('tic-tac-toe', array($next_turn['posx'], $next_turn['posy'], $teams[$current_team]['name'])));
@@ -63,11 +64,11 @@ function time_update(){
  * Choose a random turn depending on game
  * @param $game the game for which a random turn shall be generated
  */
-function get_random_turn($game){
+function get_random_turn($game, $field){
     if($game == '4GEWINNT'){
-        return viergewinnt_randomTurn();
+        return viergewinnt_randomTurn($field);
     }else if($game == 'TICTACTOE'){
-        return tictactoe_randomTurn();
+        return tictactoe_randomTurn($field);
     }
     return null;
 }
