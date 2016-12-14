@@ -13,6 +13,20 @@ function tictactoe_randomTurn($field){
         }
     }
     return null;
+
+    //More randomized approach:
+
+    //$randomy = 0;
+    //$randomx = 0;
+    //do{
+    //    $randomy = mt_rand (0,2);
+    //    $turn['posy'] = $randomy;
+    //    $randomx = mt_rand (0,2);
+    //    $turn['posx'] = $randomx;
+    //}
+    //while($field[$turn['posy']][$turn['posx']] != null) //FIX: can be Deadlock if all the fields are full
+    //return $turn;
+
 }
 
 function tictactoe_getFieldArray($dbField){
