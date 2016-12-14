@@ -1,29 +1,61 @@
 <?php
 
 require_once "db_con.php";
+require_once "tictactoe.php";
+require_once "4gewinnt.php";
 
 // Define all games
 define('TICTACTOE',0);
 define('4GEWINNT', 1);
 
+$teams = db_con('get','all_teams');
+$current_team = 0;
+
 /**
  * Gets called if timer fires
  */
 function time_update(){
-    //4-gewinnt
-    $viergewinnttemp = db_con('get', '4-gewinnt-temp');
-    if(empty($viergewinnttemp)){
-        do_random_turn('4GEWINNT');
-    }else{
-        $chosen_turn = db_con('get', '4gewinnt_chosencount')[0];
-    }
+    global $current_team, $teams;
 
-    // Tic-Tac-Toe
+    //4 GEWINNT
+    $viergewinnttemp = db_con('get', '4-gewinnt-temp');
+    // If nobody voted do random turn
+    if(empty($viergewinnttemp)){
+        $next_turn = get_random_turn('4GEWINNT');
+    }else{
+        $next_turn = db_con('get', '4gewinnt_chosencount')[0]['posx'];
+        // Read possible y position for chosen turn
+        $ypos = viergewinnt_getYPos($next_turn, viergewinnt_getFieldArray(db_con('get', '4gewinnt_sorted')));
+        if($ypos == null){
+            // If no y position was found => turn not possible => do random turn
+            $next_turn = get_random_turn('4GEWINNT');
+        }else{
+            $next_turn = array("posx" => $next_turn, "posy" => $ypos);
+        }
+    }
+    // Save turn to database
+    db_con('insert', array('4-gewinnt', array($next_turn['posx'], $next_turn['posy'], $teams[$current_team]['name'])));
+    db_con('delete', '4-gewinnt-temp');
+
+    // TIC TAC TOE
     $tictactoetemp = db_con('get', 'tic-tac-toe-temp');
     if(empty($tictactoetemp)){
-        do_random_turn('TICTACTOE');
+        $next_turn = get_random_turn('TICTACTOE');
     }else{
-        $chosen_turn = db_con('get', 'tictactoe_chosencount')[0];
+        $next_turn = db_con('get', 'tictactoe_chosencount')[0];
+        $field = tictactoe_getFieldArray(db_con('get','tictactoe_sorted'));
+        // If invalid turn do random turn
+        if($field[$next_turn['posy']][$next_turn['posx']] != null){
+            $next_turn = get_random_turn('TICTACTOE');
+        }
+    }
+    db_con('insert', array('tic-tac-toe', array($next_turn['posx'], $next_turn['posy'], $teams[$current_team]['name'])));
+    db_con('delete', 'tic-tac-toe-temp');
+
+    // CHANGE TEAM
+    $current_team++;
+    if($current_team >= count($teams)){
+        $current_team = 0;
     }
 }
 
@@ -31,8 +63,13 @@ function time_update(){
  * Choose a random turn depending on game
  * @param $game the game for which a random turn shall be generated
  */
-function do_random_turn($game){
-
+function get_random_turn($game){
+    if($game == '4GEWINNT'){
+        return viergewinnt_randomTurn();
+    }else if($game == 'TICTACTOE'){
+        return tictactoe_randomTurn();
+    }
+    return null;
 }
 
 ?>

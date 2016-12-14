@@ -51,6 +51,16 @@ function init_canvas_4gewinnt(canvas)
 
 }
 
+function draw_turn(image, xpos, ypos){
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(image, 0, 0, image.width, image.height,
+        (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7*xpos+canvas.scrollWidth*0.0078125,
+        (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6*ypos+canvas.scrollHeight*0.041168658699,
+        (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7,
+        (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6);	// Zeichnet das Bild des X in das gewählte Feld
+    ctx.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
+}
+
 function addListener_4gewinnt(canvas){
     canvas.addEventListener('mouseup', function(evt) {
 
@@ -85,24 +95,14 @@ function addListener_4gewinnt(canvas){
 
         if(turn%2==0 && fieldpos[cX][cY]==0)	//Kontrolliert ob der Zug gerade ist dann ist x dran und ob schon etwas in dem Feld ist
         {
-            c.drawImage(bo, 0, 0, bo.width, bo.height,
-                (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7*cX+canvas.scrollWidth*0.0078125,
-                (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6*cY+canvas.scrollHeight*0.041168658699,
-                (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7,
-                (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6);	// Zeichnet das Bild des X in das gewählte Feld
-            c.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
+            draw_turn(bo, cX, cY);
             turn= turn+1;
             fieldpos[cX][cY]=1;  // Sagt über 1 das im Feld ein X steht
         }
 
         else if(fieldpos[cX][cY]==0)
         {
-            c.drawImage(ro, 0, 0, ro.width, ro.height,
-                (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7*cX+canvas.scrollWidth*0.0078125,
-                (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6*cY+canvas.scrollHeight*0.041168658699,
-                (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7,
-                (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6);	// Zeichnet das Bild des O in das gewählte Feld
-            c.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
+            draw_turn(ro, cX, cY);
             turn= turn+1;
             fieldpos[cX][cY]=2;	// Sagt über 2 das im Feld ein O steht
         }
