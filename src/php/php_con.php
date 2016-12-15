@@ -32,6 +32,6 @@ if(!isset($results['error'])){
     }
 }
 
-return json_encode($results);
+echo json_encode($results);
 
 ?>

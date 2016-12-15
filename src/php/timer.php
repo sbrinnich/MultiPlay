@@ -2,7 +2,7 @@
 
 require_once "logic.php";
 
-$sleep_time = 30;
+$sleep_time = 5;
 
 while(1) {
     // Sleep
