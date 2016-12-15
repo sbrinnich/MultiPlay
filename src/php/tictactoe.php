@@ -42,7 +42,7 @@ function tictactoe_getFieldArray($dbField){
     return $field;
 }
 
-function tictactoe_checkWinner($field){
+function tictactoe_checkWinner($field, $last_turn){
     // TODO implement
     // Should return either team name if one has won or 'draw' or null
     return null;
