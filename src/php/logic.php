@@ -23,7 +23,7 @@ function time_update(){
     //4 GEWINNT
     if($win_viergewinnt == null) {
         $viergewinnttemp = db_con('get', '4-gewinnt-temp');
-        $field = viergewinnt_getFieldArray(db_con('get', '4gewinnt_sorted'));
+        $field = get_field('4GEWINNT');
         // If nobody voted do random turn
         if (empty($viergewinnttemp)) {
             $next_turn = get_random_turn('4GEWINNT', $field);
@@ -41,7 +41,7 @@ function time_update(){
         // Save turn to database
         db_con('insert', array('4-gewinnt', array($next_turn['posx'], $next_turn['posy'], $teams[$current_team]['name'])));
         db_con('delete', '4-gewinnt-temp');
-        $field = viergewinnt_getFieldArray(db_con('get', '4gewinnt_sorted'));
+        $field = get_field('4GEWINNT');
         $win_viergewinnt = viergewinnt_checkWinner($field, $next_turn, $teams);
     }else{
         // Reset game
@@ -54,7 +54,7 @@ function time_update(){
     // TIC TAC TOE
     if($win_tictactoe == null) {
         $tictactoetemp = db_con('get', 'tic-tac-toe-temp');
-        $field = tictactoe_getFieldArray(db_con('get', 'tictactoe_sorted'));
+        $field = get_field('TICTACTOE');
         if (empty($tictactoetemp)) {
             $next_turn = get_random_turn('TICTACTOE', $field);
         } else {
@@ -66,7 +66,7 @@ function time_update(){
         }
         db_con('insert', array('tic-tac-toe', array($next_turn['posx'], $next_turn['posy'], $teams[$current_team]['name'])));
         db_con('delete', 'tic-tac-toe-temp');
-        $field = tictactoe_getFieldArray(db_con('get', 'tictactoe_sorted'));
+        $field = get_field('TICTACTOE');
         $win_tictactoe = tictactoe_checkWinner($field, $next_turn, $teams);
     }else{
         // Reset game
@@ -84,13 +84,52 @@ function time_update(){
 
 /**
  * Choose a random turn depending on game
- * @param $game the game for which a random turn shall be generated
+ * @param $game int the game for which a random turn shall be generated
  */
 function get_random_turn($game, $field){
     if($game == '4GEWINNT'){
         return viergewinnt_randomTurn($field);
     }else if($game == 'TICTACTOE'){
         return tictactoe_randomTurn($field);
+    }
+    return null;
+}
+
+/**
+ * Get currently playing team
+ * @return string team who is currently allowed to choose a turn
+ */
+function get_current_team(){
+    global $current_team, $teams;
+    return $teams[$current_team];
+}
+
+/**
+ * Get current field of game
+ * @param $game int the game for which the field is asked
+ * @return array game field
+ */
+function get_field($game){
+    if($game == '4GEWINNT'){
+        return viergewinnt_getFieldArray(db_con('get', '4gewinnt_sorted'));
+    }else if($game == 'TICTACTOE'){
+        return tictactoe_getFieldArray(db_con('get', 'tictactoe_sorted'));
+    }
+    return null;
+}
+
+/**
+ * Get current status of game (if a team has won, it's a draw or game is still running)
+ * @param $game int the game for which the winner is asked
+ * @return string teamname if one has won or 'draw' if it's a draw or null if game is still running
+ */
+function get_winner($game){
+    if($game == '4GEWINNT'){
+        global $win_viergewinnt;
+        return $win_viergewinnt;
+    }else if($game == 'TICTACTOE'){
+        global $win_tictactoe;
+        return $win_tictactoe;
     }
     return null;
 }

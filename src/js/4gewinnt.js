@@ -1,5 +1,5 @@
 
-function load_4gewinnt(canvas) {
+function load_4gewinnt(canvas, field) {
 	//Einbinden der Bilder
 
     hg = new Image();
@@ -13,14 +13,7 @@ function load_4gewinnt(canvas) {
 
 	// Ein Array für die Felder des Spiels
 
-    fieldpos = new Array(7);
-    fieldpos[0] = [0, 0, 0, 0, 0, 0];
-    fieldpos[1] = [0, 0, 0, 0, 0, 0];
-    fieldpos[2] = [0, 0, 0, 0, 0, 0];
-    fieldpos[3] = [0, 0, 0, 0, 0, 0];
-    fieldpos[4] = [0, 0, 0, 0, 0, 0];
-    fieldpos[5] = [0, 0, 0, 0, 0, 0];
-    fieldpos[6] = [0, 0, 0, 0, 0, 0];
+    fieldpos = field
 
 	// turn steht für den Spielzug
 

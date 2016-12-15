@@ -1,5 +1,5 @@
 
-function load_tictactoe(canvas) {
+function load_tictactoe(canvas, field) {
     //Einbinden der Bilder
 
     hg = new Image();
@@ -21,10 +21,7 @@ function load_tictactoe(canvas) {
     dr.src = "img/Draw.png";
     // Ein Array für die Felder des Spiels
 
-    fieldpos = new Array(3);
-    fieldpos[0] = [0, 0, 0];
-    fieldpos[1] = [0, 0, 0];
-    fieldpos[2] = [0, 0, 0];
+    fieldpos = field;
 
     // turn steht für den Spielzug und win ist die Gewinnüberprüfung
 
