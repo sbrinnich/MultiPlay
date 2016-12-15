@@ -115,6 +115,9 @@ function addListener_4gewinnt(canvas){
             turn= turn+1;
             fieldpos[cX][cY]=2;	// Sagt über 2 das im Feld ein O steht
         }
+        ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+        ctx.fillRect(0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
+
     },false);
 }
 
