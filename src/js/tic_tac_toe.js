@@ -1,5 +1,5 @@
 
-function load_tictactoe(canvas) {
+function load_tictactoe(canvas, field) {
     //Einbinden der Bilder
 
     hg = new Image();
@@ -21,10 +21,7 @@ function load_tictactoe(canvas) {
     dr.src = "img/Draw.png";
     // Ein Array für die Felder des Spiels
 
-    fieldpos = new Array(3);
-    fieldpos[0] = [0, 0, 0];
-    fieldpos[1] = [0, 0, 0];
-    fieldpos[2] = [0, 0, 0];
+    fieldpos = field;
 
     // turn steht für den Spielzug und win ist die Gewinnüberprüfung
 
@@ -66,6 +63,12 @@ function draw_image_tictactoe(canvas, image, posx, posy){
     var ctx = canvas.getContext('2d');
     ctx.drawImage(image, 0, 0, image.height, image.width,
         (canvas.scrollWidth/3*posx), (canvas.scrollWidth/3*posy), canvas.scrollWidth/3, canvas.scrollWidth/3);
+}
+
+function draw_text_tictactoe(canvas, text, posx, posy){
+    var ctx = canvas.getContext('2d');
+    ctx.font = canvas.scrollWidth/3 + "px Arial";
+    ctx.fillText(text,(canvas.scrollWidth/3*posx), (canvas.scrollWidth/3*posy), canvas.scrollWidth/3);
 }
 
 function addListener_tictactoe(canvas) {

@@ -33,7 +33,7 @@ function viergewinnt_randomTurn($field){
     return $turn;
 }
 
-function viergewinnt_checkWinner($field, $last_turn){
+function viergewinnt_checkWinner($field, $last_turn, $teams){
     // TODO implement
     // Should return either team name if one has won or 'draw' or null
 
