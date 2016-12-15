@@ -39,4 +39,10 @@ function viergewinnt_randomTurn($field){
     return null;
 }
 
+function viergewinnt_checkWinner($field){
+    // TODO implement
+    // Should return either team name if one has won or draw or null
+    return null;
+}
+
 ?>
