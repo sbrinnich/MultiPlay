@@ -41,7 +41,6 @@ function time_update(){
         // Save turn to database
         db_con('insert', array('4-gewinnt', array($next_turn['posx'], $next_turn['posy'], $teams[$current_team]['name'])));
         db_con('delete', '4-gewinnt-temp');
-        //TODO winner check
         $field = viergewinnt_getFieldArray(db_con('get', '4gewinnt_sorted'));
         $win_viergewinnt = viergewinnt_checkWinner($field);
     }else{
@@ -67,7 +66,6 @@ function time_update(){
         }
         db_con('insert', array('tic-tac-toe', array($next_turn['posx'], $next_turn['posy'], $teams[$current_team]['name'])));
         db_con('delete', 'tic-tac-toe-temp');
-        //TODO winner check
         $field = tictactoe_getFieldArray(db_con('get', 'tictactoe_sorted'));
         $win_tictactoe = tictactoe_checkWinner($field);
     }else{
