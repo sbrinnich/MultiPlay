@@ -61,7 +61,7 @@ function draw_image_4gewinnt(canvas, image, xpos, ypos){
     ctx.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
 }
 
-function draw_text_4gewinnt(canvas, image, xpos, ypos){
+function draw_text_4gewinnt(canvas, text, xpos, ypos){
     var ctx = canvas.getContext('2d');
     ctx.font = (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6 + "px Arial";
     ctx.fillText(text,
@@ -74,7 +74,7 @@ function addListener_4gewinnt(canvas){
     canvas.addEventListener('mouseup', function(evt) {
 
         var c = canvas.getContext('2d');
-
+        var j; // Variable für die Schleife
         var u; // Variable für die Schleife
         var hoehe=canvas.scrollHeight; // bestimmt die Hoehe
         var breite=canvas.scrollWidth; // bestimmt die Breite
@@ -115,8 +115,25 @@ function addListener_4gewinnt(canvas){
             turn= turn+1;
             fieldpos[cX][cY]=2;	// Sagt über 2 das im Feld ein O steht
         }
-        ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
-        ctx.fillRect(0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
+
+        // Holt die Position und die Anzahl der Klicks in den Spalten des 4 Gewinnt aus der Datenbank
+       db_call("get","4gewinnt_chosencount", Zwschenstandanzeige);
+
+        // ist die Callback Funktion der Datenbankanfrage
+    function Zwschenstandanzeige(results) {
+
+        //Legt ein durchsichtiges
+    ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+    ctx.fillRect(0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
+
+        for (j = 0; j < dbresponse.length; j++)
+            {
+            var x = results[j].posx;
+            var text = results[j].countposx;
+
+            draw_text_4gewinnt(canvas, text, x, 0);
+            }
+    }
 
     },false);
 }
