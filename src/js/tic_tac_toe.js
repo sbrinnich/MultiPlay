@@ -3,6 +3,7 @@ function load_tictactoe(canv, field, team) {
     canvas = canv;
     gamefield = field;
     teamname = team;
+    playing = false;
 
     hg = new Image();
     hg.src = "img/tic-tac-toe/Tic-Tac-Toe-board.png";
@@ -33,10 +34,22 @@ function load_tictactoe(canv, field, team) {
     };
 }
 
+function check_team(team){
+    if(team['name'] == teamname){
+        addListener_tictactoe();
+    }else{
+        removeListener_tictactoe();
+    }
+}
+
 function refresh_game_tictactoe(field){
     if(!gamefield.equals(field)){
         gamefield = field;
         draw_field_tictactoe();
+        php_call('getteam', check_team);
+    }
+    if(!playing){
+        // TODO show vote status
     }
 }
 
@@ -80,21 +93,21 @@ function draw_field_tictactoe(){
     }
 }
 
+var do_player_turn = function(e) {
+    var cX = Math.floor(getMousePos(e).x/(canvas.scrollWidth/3)); // setzt cX auf einen wert zwischen 0 und 2
+    var cY = Math.floor(getMousePos(e).y/(canvas.scrollWidth/3)); // setzt cY auf einen wert zwischen 0 und 2
+
+    db_call('insert',['tic-tac-toe-temp',[cX,cY]],removeListener_tictactoe);
+};
+
 function addListener_tictactoe() {
-    canvas.addEventListener('mouseup', function(evt) {
+    canvas.addEventListener('mouseup', do_player_turn);
+    playing = true;
+}
 
-        var cX = Math.floor(getMousePos(evt).x/(canvas.scrollWidth/3)); // setzt cX auf einen wert zwischen 0 und 2
-        var cY = Math.floor(getMousePos(evt).y/(canvas.scrollWidth/3)); // setzt cY auf einen wert zwischen 0 und 2
-
-        if(teamname == "Rot") {
-
-        }else{
-
-        }
-
-        // TODO refresh after time, show vote status, remove clickable
-
-    },false);
+function removeListener_tictactoe() {
+    canvas.removeEventListener('mouseup', do_player_turn);
+    playing = false;
 }
 
 
