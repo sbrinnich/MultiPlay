@@ -55,7 +55,6 @@ function db_con($type, $arguments){
                     case 'tic-tac-toe':
                         $sql = "INSERT INTO `tic-tac-toe` (posx, posy, teamname) VALUES (" . $arguments[1][0] .
                             "," . $arguments[1][1] . ",'" . $arguments[1][2] . "')";
-                        echo $sql;
                         break;
                     case 'tic-tac-toe-temp':
                         $sql = "INSERT INTO `tic-tac-toe-temp` (posx, posy) VALUES (" .

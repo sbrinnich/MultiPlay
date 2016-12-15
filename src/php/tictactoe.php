@@ -1,22 +1,6 @@
 <?php
 
 function tictactoe_randomTurn($field){
-    /**
-    $turn = array();
-    for($i = 0; $i < 3; $i++){
-        $turn['posy'] = $i;
-        for($j = 0; $j < 3; $j++){
-            $turn['posx'] = $j;
-            if($field[$turn['posy']][$turn['posx']] == null){
-                return $turn;
-            }
-        }
-    }
-    return null;
-     */
-
-    //More randomized approach
-
     $turn = array();
     do{
         $randomy = mt_rand (0,2);
@@ -37,15 +21,13 @@ function tictactoe_getFieldArray($dbField){
         }
     }
     for($i = 0; $i < count($dbField); $i++){
-        $field[$dbField[$i]['ypos']][$dbField[$i]['xpos']] = $dbField[$i]['teamname'];
+        $field[$dbField[$i]['posy']][$dbField[$i]['posx']] = $dbField[$i]['teamname'];
     }
+    //echo '<pre>'; print_r($field); echo '</pre>';
     return $field;
 }
 
-function tictactoe_checkWinner($field, $last_turn, $teams){
-    // TODO implement
-    // Should return either team name if one has won or 'draw' or null
-
+function tictactoe_checkWinner($field, $last_turn){
     $meinteam = $field[$last_turn['posy']][$last_turn['posx']];
     $draw = 0;
 

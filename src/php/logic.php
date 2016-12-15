@@ -42,7 +42,7 @@ function time_update(){
         db_con('insert', array('4-gewinnt', array($next_turn['posx'], $next_turn['posy'], $teams[$current_team]['name'])));
         db_con('delete', '4-gewinnt-temp');
         $field = get_field('4GEWINNT');
-        $win_viergewinnt = viergewinnt_checkWinner($field, $next_turn, $teams);
+        $win_viergewinnt = viergewinnt_checkWinner($field, $next_turn);
     }else{
         // Reset game
         $win_viergewinnt = null;
@@ -64,11 +64,10 @@ function time_update(){
                 $next_turn = get_random_turn('TICTACTOE', $field);
             }
         }
-        $arr = db_con('insert', array('tic-tac-toe', array($next_turn['posx'], $next_turn['posy'], $teams[$current_team]['name'])));
-        echo '<pre>'; print_r($arr); echo '</pre>';
+        db_con('insert', array('tic-tac-toe', array($next_turn['posx'], $next_turn['posy'], $teams[$current_team]['name'])));
         db_con('delete', 'tic-tac-toe-temp');
         $field = get_field('TICTACTOE');
-        $win_tictactoe = tictactoe_checkWinner($field, $next_turn, $teams);
+        $win_tictactoe = tictactoe_checkWinner($field, $next_turn);
     }else{
         // Reset game
         $win_tictactoe = null;

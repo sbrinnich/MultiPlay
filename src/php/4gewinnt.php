@@ -8,7 +8,7 @@ function viergewinnt_getFieldArray($dbField){
         }
     }
     for($i = 0; $i < count($dbField); $i++){
-        $field[$dbField[$i]['ypos']][$dbField[$i]['xpos']] = $dbField[$i]['teamname'];
+        $field[$dbField[$i]['posy']][$dbField[$i]['posx']] = $dbField[$i]['teamname'];
     }
     return $field;
 }
@@ -23,17 +23,16 @@ function viergewinnt_getYPos($xpos, $field){
 }
 
 function viergewinnt_randomTurn($field){
-    //Random, just an idea
     $turn = array();
     do{
         $randomx = mt_rand (0,6);
         $turn['posx'] = $randomx;
         $turn['posy'] = viergewinnt_getYPos($randomx, $field);
-    }while($turn['posy'] == null); //Possible deadlock?
+    }while($turn['posy'] === null); //Possible deadlock?
     return $turn;
 }
 
-function viergewinnt_checkWinner($field, $last_turn, $teams){
+function viergewinnt_checkWinner($field, $last_turn){
     // TODO implement
     // Should return either team name if one has won or 'draw' or null
 
@@ -82,10 +81,10 @@ function are_4_in_a_row($field, $team, $x, $y, $deltax, $deltay){
     $tries = 1;
     while ($tries <= 4)//try on each position of possible
     {
-        0
-         0
-          0
-           0
+        //0
+         //0
+          //0
+           //0
 
 
         $tries++;

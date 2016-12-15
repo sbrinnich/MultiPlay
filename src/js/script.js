@@ -41,7 +41,8 @@ function load_canvas() {
  */
 function play_tictactoe(field) {
     load_canvas();
-    load_tictactoe(active_canvas, field);
+    load_tictactoe(active_canvas, field, team);
+    setInterval(refresh_game,2000,"tictactoe");
 }
 
 /**
@@ -49,7 +50,8 @@ function play_tictactoe(field) {
  */
 function play_4gewinnt(field) {
     load_canvas();
-    load_4gewinnt(active_canvas, field);
+    load_4gewinnt(active_canvas, field, team);
+    setInterval(refresh_game,2000,"4gewinnt");
 }
 
 /**
@@ -85,9 +87,13 @@ function db_call(type,args,callback) {
         data: {type: type, arguments: args}
     }).done(function (obj) {
         if( !('error' in obj) ) {
-            callback(obj.results);
+            if(callback != null) {
+                callback(obj.results);
+            }
         }else {
-            callback(obj.error);
+            if(callback != null) {
+                callback(obj.error);
+            }
         }
     });
 }
@@ -106,11 +112,27 @@ function php_call(type,callback) {
         data: {type: type}
     }).done(function (obj) {
         if( !('error' in obj) ) {
-            callback(obj.results);
+            if(callback != null) {
+                callback(obj.results);
+            }
         }else {
-            callback(obj.error);
+            if (callback != null) {
+                callback(obj.error);
+            }
         }
     });
+}
+
+/**
+ * Refreshes the game status (from database) and redraws the game field
+ * @param gamename
+ */
+function refresh_game(gamename){
+    if(gamename == "tictactoe"){
+        php_call('getfield_tictactoe', refresh_game_tictactoe);
+    }else if(gamename == "4gewinnt"){
+        php_call('getfield_4gewinnt', refresh_game_4gewinnt);
+    }
 }
 
 /**
@@ -188,3 +210,35 @@ function selectteam(targeturl){
         document.getElementById("lets-play-btn").setAttribute("href", (target + "&team=" + targeturl));
     }
 }
+
+// FUNCTION FOR COMPARING ARRAYS
+
+// Warn if overriding existing method
+if(Array.prototype.equals)
+    console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
+// attach the .equals method to Array's prototype to call it on any array
+Array.prototype.equals = function (array) {
+    // if the other array is a falsy value, return
+    if (!array)
+        return false;
+
+    // compare lengths - can save a lot of time
+    if (this.length != array.length)
+        return false;
+
+    for (var i = 0, l=this.length; i < l; i++) {
+        // Check if we have nested arrays
+        if (this[i] instanceof Array && array[i] instanceof Array) {
+            // recurse into the nested arrays
+            if (!this[i].equals(array[i]))
+                return false;
+        }
+        else if (this[i] != array[i]) {
+            // Warning - two different object instances will never be equal: {x:20} != {x:20}
+            return false;
+        }
+    }
+    return true;
+};
+// Hide method from for-in loops
+Object.defineProperty(Array.prototype, "equals", {enumerable: false});
