@@ -23,20 +23,14 @@ function viergewinnt_getYPos($xpos, $field){
 }
 
 function viergewinnt_randomTurn($field){
-    // TODO implement
-
-    //Random, just an idea:
-        //$randomx = 0;
-        //$turn = array();
-        //do{
-        //    $randomx = mt_rand (0,6);
-        //    $turn['posx'] = $randomx;
-        //    $turn['posy'] = viergewinnt_getYPos($randomx, $field);
-        //}
-        //while($turn['posy'] == null) //FIX: can be Deadlock if all the fields are full
-        //return $turn;
-
-    return null;
+    //Random, just an idea
+    $turn = array();
+    do{
+        $randomx = mt_rand (0,6);
+        $turn['posx'] = $randomx;
+        $turn['posy'] = viergewinnt_getYPos($randomx, $field);
+    }while($turn['posy'] == null); //Possible deadlock?
+    return $turn;
 }
 
 function viergewinnt_checkWinner($field){
