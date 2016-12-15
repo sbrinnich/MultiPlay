@@ -51,7 +51,7 @@ function init_canvas_4gewinnt(canvas)
 
 }
 
-function draw_turn_4gewinnt(canvas, image, xpos, ypos){
+function draw_image_4gewinnt(canvas, image, xpos, ypos){
     var ctx = canvas.getContext('2d');
     ctx.drawImage(image, 0, 0, image.width, image.height,
         (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7*xpos+canvas.scrollWidth*0.0078125,
@@ -59,6 +59,15 @@ function draw_turn_4gewinnt(canvas, image, xpos, ypos){
         (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7,
         (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6);	// Zeichnet das Bild des X in das gewählte Feld
     ctx.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
+}
+
+function draw_text_4gewinnt(canvas, image, xpos, ypos){
+    var ctx = canvas.getContext('2d');
+    ctx.font = (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6 + "px Arial";
+    ctx.fillText(text,
+        (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7*xpos+canvas.scrollWidth*0.0078125,
+        (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6*ypos+canvas.scrollHeight*0.041168658699,
+        (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7);
 }
 
 function addListener_4gewinnt(canvas){
@@ -95,14 +104,14 @@ function addListener_4gewinnt(canvas){
 
         if(turn%2==0 && fieldpos[cX][cY]==0)	//Kontrolliert ob der Zug gerade ist dann ist x dran und ob schon etwas in dem Feld ist
         {
-            draw_turn_4gewinnt(canvas, bo, cX, cY);
+            draw_image_4gewinnt(canvas, bo, cX, cY);
             turn= turn+1;
             fieldpos[cX][cY]=1;  // Sagt über 1 das im Feld ein X steht
         }
 
         else if(fieldpos[cX][cY]==0)
         {
-            draw_turn_4gewinnt(canvas, ro, cX, cY);
+            draw_image_4gewinnt(canvas, ro, cX, cY);
             turn= turn+1;
             fieldpos[cX][cY]=2;	// Sagt über 2 das im Feld ein O steht
         }

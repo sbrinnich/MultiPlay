@@ -68,6 +68,12 @@ function draw_image_tictactoe(canvas, image, posx, posy){
         (canvas.scrollWidth/3*posx), (canvas.scrollWidth/3*posy), canvas.scrollWidth/3, canvas.scrollWidth/3);
 }
 
+function draw_text_tictactoe(canvas, text, posx, posy){
+    var ctx = canvas.getContext('2d');
+    ctx.font = canvas.scrollWidth/3 + "px Arial";
+    ctx.fillText(text,(canvas.scrollWidth/3*posx), (canvas.scrollWidth/3*posy), canvas.scrollWidth/3);
+}
+
 function addListener_tictactoe(canvas) {
     canvas.addEventListener('mouseup', function(evt) {
 
