@@ -24,7 +24,7 @@ function load_tictactoe(canv, field, team) {
      */
 
     init_canvas_tictactoe();
-    php_call('getteam', check_team);
+    php_call('getteam', check_team_tictactoe);
     hg.onload = function(){
         red.onload = function () {
             blue.onload = function () {
@@ -34,7 +34,7 @@ function load_tictactoe(canv, field, team) {
     };
 }
 
-function check_team(team){
+function check_team_tictactoe(team){
     if(team['name'] == teamname){
         addListener_tictactoe();
     }else{
@@ -46,7 +46,7 @@ function refresh_game_tictactoe(field){
     if(!gamefield.equals(field)){
         gamefield = field;
         draw_field_tictactoe();
-        php_call('getteam', check_team);
+        php_call('getteam', check_team_tictactoe);
     }
     if(!playing){
         // TODO show vote status
@@ -93,25 +93,22 @@ function draw_field_tictactoe(){
     }
 }
 
-var do_player_turn = function(e) {
+var do_player_turn_tictactoe = function(e) {
     var cX = Math.floor(getMousePos(e).x/(canvas.scrollWidth/3)); // setzt cX auf einen wert zwischen 0 und 2
     var cY = Math.floor(getMousePos(e).y/(canvas.scrollWidth/3)); // setzt cY auf einen wert zwischen 0 und 2
 
     db_call('insert',['tic-tac-toe-temp',[cX,cY]], null);
-    console.log("Insert");
     removeListener_tictactoe();
 };
 
 function addListener_tictactoe() {
-    canvas.addEventListener('mouseup', do_player_turn);
+    canvas.addEventListener('mouseup', do_player_turn_tictactoe);
     playing = true;
-    console.log("Add");
 }
 
 function removeListener_tictactoe() {
-    canvas.removeEventListener('mouseup', do_player_turn);
+    canvas.removeEventListener('mouseup', do_player_turn_tictactoe);
     playing = false;
-    console.log("remove");
 }
 
 

@@ -3,6 +3,7 @@ function load_4gewinnt(canv, field, team) {
     canvas = canv;
     gamefield = field;
     teamname = team;
+    playing = false;
 
     hg = new Image();
     hg.src = "img/4-gewinnt/4-Gewinnt-board.png";
@@ -12,7 +13,7 @@ function load_4gewinnt(canv, field, team) {
     blue.src = "img/4-gewinnt/4-Gewinnt-blue.png";
 
     init_canvas_4gewinnt();
-    addListener_4gewinnt();
+    php_call('getteam', check_team_4gewinnt);
     hg.onload = function(){
         red.onload = function () {
             blue.onload = function () {
@@ -42,6 +43,18 @@ function refresh_game_4gewinnt(field){
     if(!gamefield.equals(field)){
         gamefield = field;
         draw_field_4gewinnt();
+        php_call('getteam', check_team_4gewinnt);
+    }
+    if(!playing){
+        // TODO show vote status
+    }
+}
+
+function check_team_4gewinnt(team){
+    if(team['name'] == teamname){
+        addListener_4gewinnt();
+    }else{
+        removeListener_4gewinnt();
     }
 }
 
@@ -83,21 +96,22 @@ function draw_field_4gewinnt(){
     ctx.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
 }
 
-function addListener_4gewinnt(){
-    canvas.addEventListener('mouseup', function(evt) {
+var do_player_turn_4gewinnt = function(e) {
+    var cX = Math.floor(getMousePos(e).x/(canvas.scrollWidth/7)); // setzt cX auf einen wert zwischen 0 und 2
+    var cY = Math.floor(getMousePos(e).y/(canvas.scrollHeight/6)); // setzt cY auf einen wert zwischen 0 und 2
 
-        var cX = Math.floor(getMousePos(evt).x/(canvas.scrollWidth/7)); // setzt cX auf einen wert zwischen 0 und 2
-        var cY = Math.floor(getMousePos(evt).y/(canvas.scrollHeight/6)); // setzt cY auf einen wert zwischen 0 und 2
+    db_call('insert',['4-gewinnt-temp',[cX,cY]], null);
+    removeListener_4gewinnt();
+};
 
-        if(teamname == "Rot") {
+function addListener_4gewinnt() {
+    canvas.addEventListener('mouseup', do_player_turn_4gewinnt);
+    playing = true;
+}
 
-        }else{
-
-        }
-
-        // TODO refresh after time, show vote status, remove clickable
-
-    },false);
+function removeListener_4gewinnt() {
+    canvas.removeEventListener('mouseup', do_player_turn_4gewinnt);
+    playing = false;
 }
 
 // Bestimmt die Maus position

@@ -81,8 +81,7 @@ function time_update(){
     if($index >= count($teams)){
         $index = 0;
     }
-    $arr = db_con('update', array(0, $current_team['name']));
-    echo '<pre>'; print_r($arr); echo '</pre>';
+    db_con('update', array(0, $current_team['name']));
     $current_team = $teams[$index];
     db_con('update', array(1, $current_team['name']));
 }
