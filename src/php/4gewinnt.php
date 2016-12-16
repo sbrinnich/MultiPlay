@@ -32,9 +32,47 @@ function viergewinnt_randomTurn($field){
     return $turn;
 }
 
+function check_if_in_field($posx, $posy){
+    if($posx >= 0 && $posx <= 6 && $posy >= 0 && $posy <= 5) {
+        return true;
+    }
+    return false;
+}
+
+function matches_in_direction($matches, $posx, $posy, $deltax, $deltay, $field, $team)
+{
+    //returns #matches found
+    $posx = $posx + $deltax;
+    $posy = $posy + $deltay;
+
+    if(check_if_in_field($posx, $posy)){
+        if($field[$posy][$posx] == $team){
+            $matches = matches_in_direction($matches++, $posx, $posy, $deltax, $deltay, $field, $team);
+        }
+    }
+    return $matches;
+}
+
+function check_if_4_in_a_row($field, $team, $x, $y, $deltax, $deltay){
+    //returns team if win, or null if not.
+
+    $matches = matches_in_direction(0, $x, $y, $deltax, $deltay, $field, $team);
+
+    //reverse direction
+    $deltax *= -1;
+    $deltay *= -1;
+
+    $matches = matches_in_direction($matches, $x, $y, $deltax, $deltay, $field, $team);
+
+    if($matches >= 3)
+    {
+        return $team;
+    }
+
+    return null;
+}
+
 function viergewinnt_checkWinner($field, $last_turn){
-    // TODO implement
-    // Should return either team name if one has won or 'draw' or null
 
     $x = $last_turn['posx']; //x-position of last turn
     $y = $last_turn['posy']; //y-position of last turn
@@ -42,13 +80,22 @@ function viergewinnt_checkWinner($field, $last_turn){
     $inarow = 1;
 
     //topright - bottomleft
+    $checkd1 = check_if_4_in_a_row($field, $team, $x, $y, 1, 1);
+    if($checkd1 != null){
+        return $checkd1;
+    }
 
-
-    //topleft - bootomright
-
+    //topleft - bottomright
+    $checkd2 = check_if_4_in_a_row($field, $team, $x, $y, -1, 1);
+    if($checkd2 != null){
+        return $checkd2;
+    }
 
     //horizontal
-
+    $checkh = check_if_4_in_a_row($field, $team, $x, $y, 1, 0);
+    if($checkh != null){
+        return $checkh;
+    }
 
     //down
     if($y <= 2){ //if high enough, check down
@@ -76,22 +123,7 @@ function viergewinnt_checkWinner($field, $last_turn){
     return null;
 }
 
-function are_4_in_a_row($field, $team, $x, $y, $deltax, $deltay){
-    //return team if win, or null if not
-    $tries = 1;
-    while ($tries <= 4)//try on each position of possible
-    {
-        //0
-         //0
-          //0
-           //0
 
 
-        $tries++;
-    }
-
-
-    return null;
-}
 
 ?>
