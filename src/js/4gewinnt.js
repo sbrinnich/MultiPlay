@@ -96,6 +96,14 @@ function draw_field_4gewinnt(){
     ctx.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
 }
 
+function draw_inactivestatus_4gewinnt(){
+    var ctx = canvas.getContext('2d');
+    ctx.globalAlpha = 0.5;
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.scrollWidth, canvas.scrollHeight);
+    ctx.globalAlpha = 1;
+}
+
 var do_player_turn_4gewinnt = function(e) {
     var cX = Math.floor(getMousePos(e).x/(canvas.scrollWidth/7)); // setzt cX auf einen wert zwischen 0 und 2
     var cY = Math.floor(getMousePos(e).y/(canvas.scrollHeight/6)); // setzt cY auf einen wert zwischen 0 und 2
@@ -112,6 +120,7 @@ function addListener_4gewinnt() {
 function removeListener_4gewinnt() {
     canvas.removeEventListener('mouseup', do_player_turn_4gewinnt);
     playing = false;
+    draw_inactivestatus_4gewinnt();
 }
 
 // Bestimmt die Maus position

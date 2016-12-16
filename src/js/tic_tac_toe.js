@@ -93,6 +93,14 @@ function draw_field_tictactoe(){
     }
 }
 
+function draw_inactivestatus_tictactoe(){
+    var ctx = canvas.getContext('2d');
+    ctx.globalAlpha = 0.5;
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.scrollWidth, canvas.scrollHeight);
+    ctx.globalAlpha = 1;
+}
+
 var do_player_turn_tictactoe = function(e) {
     var cX = Math.floor(getMousePos(e).x/(canvas.scrollWidth/3)); // setzt cX auf einen wert zwischen 0 und 2
     var cY = Math.floor(getMousePos(e).y/(canvas.scrollWidth/3)); // setzt cY auf einen wert zwischen 0 und 2
@@ -109,6 +117,7 @@ function addListener_tictactoe() {
 function removeListener_tictactoe() {
     canvas.removeEventListener('mouseup', do_player_turn_tictactoe);
     playing = false;
+    draw_inactivestatus_tictactoe();
 }
 
 
