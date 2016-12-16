@@ -9,9 +9,9 @@ define('TICTACTOE',0);
 define('4GEWINNT', 1);
 
 $teams = db_con('get','all_teams')['results'];
-$current_team = 0;
-$win_tictactoe = null;
+$current_team = get_current_team();
 $win_viergewinnt = null;
+$win_tictactoe = null;
 
 
 /**
@@ -39,7 +39,7 @@ function time_update(){
             }
         }
         // Save turn to database
-        db_con('insert', array('4-gewinnt', array($next_turn['posx'], $next_turn['posy'], $teams[$current_team]['name'])));
+        db_con('insert', array('4-gewinnt', array($next_turn['posx'], $next_turn['posy'], $current_team['name'])));
         db_con('delete', '4-gewinnt-temp');
         $field = get_field('4GEWINNT');
         $win_viergewinnt = viergewinnt_checkWinner($field, $next_turn);
@@ -64,7 +64,7 @@ function time_update(){
                 $next_turn = get_random_turn('TICTACTOE', $field);
             }
         }
-        db_con('insert', array('tic-tac-toe', array($next_turn['posx'], $next_turn['posy'], $teams[$current_team]['name'])));
+        db_con('insert', array('tic-tac-toe', array($next_turn['posx'], $next_turn['posy'], $current_team['name'])));
         db_con('delete', 'tic-tac-toe-temp');
         $field = get_field('TICTACTOE');
         $win_tictactoe = tictactoe_checkWinner($field, $next_turn);
@@ -76,10 +76,15 @@ function time_update(){
     }
 
     // CHANGE TEAM
-    $current_team++;
-    if($current_team >= count($teams)){
-        $current_team = 0;
+    $index = array_search($current_team, $teams);
+    $index++;
+    if($index >= count($teams)){
+        $index = 0;
     }
+    $arr = db_con('update', array(0, $current_team['name']));
+    echo '<pre>'; print_r($arr); echo '</pre>';
+    $current_team = $teams[$index];
+    db_con('update', array(1, $current_team['name']));
 }
 
 /**
@@ -97,11 +102,16 @@ function get_random_turn($game, $field){
 
 /**
  * Get currently playing team
- * @return string team who is currently allowed to choose a turn
+ * @return array team who is currently allowed to choose a turn
  */
 function get_current_team(){
-    global $current_team, $teams;
-    return $teams[$current_team];
+    global $teams;
+    for($i = 0; $i < count($teams); $i++){
+        if($teams[$i]['active'] == 1){
+            return $teams[$i];
+        }
+    }
+    return $teams[0];
 }
 
 /**

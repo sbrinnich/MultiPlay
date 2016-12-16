@@ -24,7 +24,7 @@ function load_tictactoe(canv, field, team) {
      */
 
     init_canvas_tictactoe();
-    addListener_tictactoe();
+    php_call('getteam', check_team);
     hg.onload = function(){
         red.onload = function () {
             blue.onload = function () {
@@ -97,17 +97,21 @@ var do_player_turn = function(e) {
     var cX = Math.floor(getMousePos(e).x/(canvas.scrollWidth/3)); // setzt cX auf einen wert zwischen 0 und 2
     var cY = Math.floor(getMousePos(e).y/(canvas.scrollWidth/3)); // setzt cY auf einen wert zwischen 0 und 2
 
-    db_call('insert',['tic-tac-toe-temp',[cX,cY]],removeListener_tictactoe);
+    db_call('insert',['tic-tac-toe-temp',[cX,cY]], null);
+    console.log("Insert");
+    removeListener_tictactoe();
 };
 
 function addListener_tictactoe() {
     canvas.addEventListener('mouseup', do_player_turn);
     playing = true;
+    console.log("Add");
 }
 
 function removeListener_tictactoe() {
     canvas.removeEventListener('mouseup', do_player_turn);
     playing = false;
+    console.log("remove");
 }
 
 
