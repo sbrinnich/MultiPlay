@@ -2,7 +2,7 @@
 
 function db_con($type, $arguments){
     $results = array();
-    if($type != 'insert' && $type != 'get' && $type != 'delete'){
+    if($type != 'insert' && $type != 'get' && $type != 'delete' && $type != 'update'){
         $results['error'] = 'Wrong type!';
     }
     if($arguments == null){
@@ -85,6 +85,15 @@ function db_con($type, $arguments){
                     $results['error'] = 'Wrong arguments!';
                 }
                 break;
+            case 'update':
+                $sql = "UPDATE team SET active=" . $arguments[0]
+                    . " WHERE name='" . $arguments[1] . "'";
+
+                if (mysqli_query($conn, $sql)) {
+                    $results['results'] = 'success';
+                } else {
+                    $results['error'] = mysqli_error($conn);
+                }
         }
 
         mysqli_close($conn);
