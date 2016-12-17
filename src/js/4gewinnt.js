@@ -47,7 +47,7 @@ function refresh_game_4gewinnt(field){
     }
 }
 
-function zwischenstandanzeige(results) {
+function zwischenstandanzeige_4gewinnt(results) {
 
     // Sorgt dafür das für jeder Spalte des Spiels ein Wert geschrieben wird
     for (var j = 0; j < results.length; j++) {
@@ -136,7 +136,7 @@ function removeListener_4gewinnt() {
     canvas.removeEventListener('mouseup', do_player_turn_4gewinnt);
     playing = false;
     draw_inactivestatus_4gewinnt();
-    db_call("get", "4gewinnt_chosencount", zwischenstandanzeige);
+    db_call("get", "4gewinnt_chosencount", zwischenstandanzeige_4gewinnt);
 }
 
 // Bestimmt die Maus position

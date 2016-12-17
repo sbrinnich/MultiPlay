@@ -53,6 +53,17 @@ function refresh_game_tictactoe(field){
     }
 }
 
+function zwischenstandanzeige_tictactoe(results) {
+    for (var j = 0; j < results.length; j++) {
+        var x = results[j].posx;
+        var y = results[j].posy;
+        var text = results[j].countposx;
+
+        draw_text_tictactoe(text, x, y);
+    }
+
+}
+
 function init_canvas_tictactoe()
 {
     canvas.style.width ='100%';
@@ -121,6 +132,7 @@ function removeListener_tictactoe() {
     canvas.removeEventListener('mouseup', do_player_turn_tictactoe);
     playing = false;
     draw_inactivestatus_tictactoe();
+    db_call("get", "tictactoe_chosencount", zwischenstandanzeige_tictactoe);
 }
 
 
