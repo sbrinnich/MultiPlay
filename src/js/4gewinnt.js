@@ -45,10 +45,6 @@ function refresh_game_4gewinnt(field){
         draw_field_4gewinnt();
         php_call('getteam', check_team_4gewinnt);
     }
-    if(!playing) {
-        // Holt die Position und die Anzahl der Klicks in den Spalten des 4 Gewinnt aus der Datenbank
-        db_call("get", "4gewinnt_chosencount", zwischenstandanzeige);
-    }
 }
 
 function zwischenstandanzeige(results) {
@@ -140,6 +136,7 @@ function removeListener_4gewinnt() {
     canvas.removeEventListener('mouseup', do_player_turn_4gewinnt);
     playing = false;
     draw_inactivestatus_4gewinnt();
+    db_call("get", "4gewinnt_chosencount", zwischenstandanzeige);
 }
 
 // Bestimmt die Maus position
