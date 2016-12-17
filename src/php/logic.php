@@ -31,7 +31,7 @@ function time_update(){
             $next_turn = db_con('get', '4gewinnt_chosencount')['results'][0]['posx'];
             // Read possible y position for chosen turn
             $ypos = viergewinnt_getYPos($next_turn, $field);
-            if ($ypos == null) {
+            if ($ypos === null) {
                 // If no y position was found => turn not possible => do random turn
                 $next_turn = get_random_turn('4GEWINNT', $field);
             } else {
