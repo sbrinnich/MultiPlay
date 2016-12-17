@@ -45,24 +45,23 @@ function refresh_game_4gewinnt(field){
         draw_field_4gewinnt();
         php_call('getteam', check_team_4gewinnt);
     }
-    if(!playing){
+    if(!playing) {
         // Holt die Position und die Anzahl der Klicks in den Spalten des 4 Gewinnt aus der Datenbank
-        db_call("get","4gewinnt_chosencount", Zwschenstandanzeige);
+        db_call("get", "4gewinnt_chosencount", zwischenstandanzeige);
+    }
+}
 
-        // ist die Callback Funktion der Datenbankanfrage
-        function Zwschenstandanzeige(results) {
+function zwischenstandanzeige(results) {
 
-            // Sorgt dafür das für jeder Spalte des Spiels ein Wert geschrieben wird
-            for (j = 0; j < dbresponse.length; j++)
-            {
-                // Da die Werte in der Datenbank nicht geordnet sind muss man sie Durchgehen und sich das Zwischenergebnis zu der dazugehörigen Spalte holen
-                var x = results[j].posx; // bestimmt die Spalte
-                var text = results[j].countposx; // gibt das Zwischenergebniss der Spalte an
+    // Sorgt dafür das für jeder Spalte des Spiels ein Wert geschrieben wird
+    for (var j = 0; j < dbresponse.length; j++) {
+        // Da die Werte in der Datenbank nicht geordnet sind muss man sie Durchgehen und sich das Zwischenergebnis zu der dazugehörigen Spalte holen
+        var x = results[j].posx; // bestimmt die Spalte
+        var text = results[j].countposx; // gibt das Zwischenergebniss der Spalte an
 
-                draw_text_4gewinnt(canvas, text, x, 0);
-            }
+        draw_text_4gewinnt(text, x, 0);
+    }
 
-        }
 }
 
 function check_team_4gewinnt(team){
