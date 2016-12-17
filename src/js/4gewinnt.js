@@ -54,7 +54,7 @@ function refresh_game_4gewinnt(field){
 function zwischenstandanzeige(results) {
 
     // Sorgt dafür das für jeder Spalte des Spiels ein Wert geschrieben wird
-    for (var j = 0; j < dbresponse.length; j++) {
+    for (var j = 0; j < results.length; j++) {
         // Da die Werte in der Datenbank nicht geordnet sind muss man sie Durchgehen und sich das Zwischenergebnis zu der dazugehörigen Spalte holen
         var x = results[j].posx; // bestimmt die Spalte
         var text = results[j].countposx; // gibt das Zwischenergebniss der Spalte an
@@ -82,12 +82,17 @@ function draw_image_4gewinnt(image, xpos, ypos){
     ctx.drawImage(hg, 0, 0, hg.width, hg.height, 0, 0, canvas.scrollWidth, canvas.scrollHeight);
 }
 
-function draw_text_4gewinnt(image, xpos, ypos){
+function draw_text_4gewinnt(text, xpos, ypos){
     var ctx = canvas.getContext('2d');
-    ctx.font = (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6 + "px Arial";
+    ctx.fillStyle = "#000000";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "center";
+    ctx.font = (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/12 + "px Arial";
     ctx.fillText(text,
-        (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7*xpos+canvas.scrollWidth*0.0078125,
-        (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6*ypos+canvas.scrollHeight*0.041168658699,
+        (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7*xpos+canvas.scrollWidth*0.0078125+
+        (canvas.scrollWidth-canvas.scrollWidth*0.015625)/14,
+        (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6*ypos+canvas.scrollHeight*0.041168658699+
+        (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/12,
         (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7);
 }
 

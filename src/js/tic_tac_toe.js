@@ -70,8 +70,11 @@ function draw_image_tictactoe(image, posx, posy){
 
 function draw_text_tictactoe(text, posx, posy){
     var ctx = canvas.getContext('2d');
-    ctx.font = canvas.scrollWidth/3 + "px Arial";
-    ctx.fillText(text,(canvas.scrollWidth/3*posx), (canvas.scrollWidth/3*posy), canvas.scrollWidth/3);
+    ctx.fillStyle = "#000000";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "center";
+    ctx.font = canvas.scrollWidth/6 + "px Arial";
+    ctx.fillText(text,(canvas.scrollWidth/3*posx+canvas.scrollWidth/6), (canvas.scrollWidth/3*posy+canvas.scrollWidth/6), canvas.scrollWidth/3);
 }
 
 function draw_field_tictactoe(){
