@@ -45,9 +45,9 @@ function matches_in_direction($matches, $posx, $posy, $deltax, $deltay, $field, 
     $posx = $posx + $deltax;
     $posy = $posy + $deltay;
 
-    if(check_if_in_field($posx, $posy)){
+    if(check_if_in_field($posx, $posy == true)){
         if($field[$posy][$posx] == $team){
-            $matches = matches_in_direction($matches++, $posx, $posy, $deltax, $deltay, $field, $team);
+            $matches = matches_in_direction(++$matches, $posx, $posy, $deltax, $deltay, $field, $team);
         }
     }
     return $matches;
@@ -59,8 +59,8 @@ function check_if_4_in_a_row($field, $team, $x, $y, $deltax, $deltay){
     $matches = matches_in_direction(0, $x, $y, $deltax, $deltay, $field, $team);
 
     //reverse direction
-    $deltax *= -1;
-    $deltay *= -1;
+    $deltax = $deltax * (-1);
+    $deltay = $deltay * (-1);
 
     $matches = matches_in_direction($matches, $x, $y, $deltax, $deltay, $field, $team);
 
@@ -99,7 +99,7 @@ function viergewinnt_checkWinner($field, $last_turn){
 
     //down
     if($y <= 2){ //if high enough, check down
-        if($field[$y][$x+1] == $team && $field[$y][$x+2] == $team && $field[$y][$x+3] == $team)
+        if($field[$y+1][$x] == $team && $field[$y+2][$x] == $team && $field[$y+3][$x] == $team)
         {
             return $team;
         }
