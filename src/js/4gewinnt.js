@@ -44,8 +44,37 @@ function refresh_game_4gewinnt(field){
         gamefield = field;
         draw_field_4gewinnt();
         php_call('getteam', check_team_4gewinnt);
+        db_call("get", "game-states", gewinnanzeige_4gewinnt);
     }
 }
+
+function gewinnanzeige_4gewinnt(results) {
+
+
+    for(j=0;j < results.length; j++) {
+        if (results['game'][j] == "4gewinnt") {
+            var position = j; }
+    }
+
+    if(results['state'][position] != null) {
+        var ergebnis = results['state'][position];
+
+        if(ergebnis == "Rot") {
+            var text = "Team Rot gewinnt";}
+
+        else if(ergebnis == "Blau") {
+            var text = "Team Rot gewinnt";}
+
+        else if(ergebnis == "draw") {
+            var text = "Draw";}
+
+        else{
+            var text = "Fehler";}
+
+        draw_text_4gewinnt_gewinnanzeige(text, 3, 4);
+    }
+}
+
 
 function zwischenstandanzeige_4gewinnt(results) {
 
@@ -91,6 +120,21 @@ function draw_text_4gewinnt(text, xpos, ypos){
         (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/12,
         (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7);
 }
+
+function draw_text_4gewinnt_gewinnanzeige(text, xpos, ypos){
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = "#000000";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "center";
+    ctx.font = (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/12 + "px Arial";
+    ctx.fillText(text,
+        (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7*xpos+canvas.scrollWidth*0.0078125+
+        (canvas.scrollWidth-canvas.scrollWidth*0.015625)/14,
+        (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6*ypos+canvas.scrollHeight*0.041168658699+
+        (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/12,
+        (canvas.scrollWidth-canvas.scrollWidth*0.015625));
+}
+
 
 function draw_field_4gewinnt(){
     var ctx = canvas.getContext('2d');
