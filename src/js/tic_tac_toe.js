@@ -59,8 +59,8 @@ function gewinnanzeige_tictactoe(results) {
             var position = j; }
     }
 
-        if(results['states'][position] != 0) {
-            var ergebnis = results['game'].tictactoe['states'];
+        if(results['states'][position] != null) {
+            var ergebnis = results['states'][position];
 
             if(ergebnis == "Rot") {
                 var text = "Team Rot gewinnt";}
