@@ -4,6 +4,8 @@ function load_tictactoe(canv, field, team) {
     gamefield = field;
     teamname = team;
     playing = false;
+    game_end = false;
+    wait = true;
 
     hg = new Image();
     hg.src = "img/tic-tac-toe/Tic-Tac-Toe-board.png";
@@ -40,26 +42,30 @@ function check_team_tictactoe(team){
     }else{
         removeListener_tictactoe();
     }
+    wait = false;
 }
 
 function refresh_game_tictactoe(field){
     if(!gamefield.equals(field)){
+        wait = true;
         gamefield = field;
         draw_field_tictactoe();
         php_call('getteam', check_team_tictactoe);
         db_call("get", "all_game_states", gewinnanzeige_tictactoe);
     }
+    if(!playing && !game_end && !wait){
+        db_call("get", "tictactoe_chosencount", zwischenstandanzeige_tictactoe);
+    }
 }
 
 function gewinnanzeige_tictactoe(results) {
-    console.log(results);
-
     for(var j=0;j < results.length; j++) {
         if (results[j]['game'] == "tictactoe") {
             var position = j; }
     }
 
         if(results[position]['state'] != null) {
+            game_end = true;
             var ergebnis = results[position]['state'];
 
             if(ergebnis == "Rot") {
@@ -75,11 +81,15 @@ function gewinnanzeige_tictactoe(results) {
                 var text = "Fehler";}
 
                 draw_text_tictactoe_gewinnanzeige(text, 1, 1);
+        }else{
+            game_end = false;
         }
     }
 
 
 function zwischenstandanzeige_tictactoe(results) {
+    draw_field_tictactoe();
+    draw_inactivestatus_tictactoe();
     for (var j = 0; j < results.length; j++) {
         var x = results[j].posx;
         var y = results[j].posy;
@@ -162,12 +172,12 @@ var do_player_turn_tictactoe = function(e) {
 function addListener_tictactoe() {
     canvas.addEventListener('mouseup', do_player_turn_tictactoe);
     playing = true;
+    draw_field_tictactoe();
 }
 
 function removeListener_tictactoe() {
     canvas.removeEventListener('mouseup', do_player_turn_tictactoe);
     playing = false;
-    draw_inactivestatus_tictactoe();
     db_call("get", "tictactoe_chosencount", zwischenstandanzeige_tictactoe);
 }
 
