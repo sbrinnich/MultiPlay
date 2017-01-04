@@ -90,14 +90,27 @@ function db_con($type, $arguments){
                 }
                 break;
             case 'update':
-                $sql = "UPDATE team SET active=" . $arguments[0]
-                    . " WHERE name='" . $arguments[1] . "'";
-
+                $sql = "";
+                switch($arguments[0]) {
+                    case 'team':
+                        $sql = "UPDATE team SET active=" . $arguments[1][0]
+                        . " WHERE name='" . $arguments[1][1] . "'";
+                        break;
+                    case 'game-states':
+                        if($arguments[1][0] === null){
+                            $sql = "UPDATE `game-states` SET state=NULL WHERE game='" . $arguments[1][1] . "'";
+                        }else{
+                            $sql = "UPDATE `game-states` SET state='" . $arguments[1][0]
+                                . "' WHERE game='" . $arguments[1][1] . "'";
+                        }
+                        break;
+                }
                 if (mysqli_query($conn, $sql)) {
                     $results['results'] = 'success';
                 } else {
                     $results['error'] = mysqli_error($conn);
                 }
+                break;
         }
 
         mysqli_close($conn);
