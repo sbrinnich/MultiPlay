@@ -64,27 +64,21 @@ function gewinnanzeige_tictactoe(results) {
             var position = j; }
     }
 
-        if(results[position]['state'] != null) {
-            game_end = true;
-            var ergebnis = results[position]['state'];
+    if(results[position]['state'] != null) {
+        game_end = true;
+        var ergebnis = results[position]['state'];
 
-            if(ergebnis == "Rot") {
-                var text = "Team Rot gewinnt";}
-
-            else if(ergebnis == "Blau") {
-                var text = "Team Blau gewinnt";}
-
-            else if(ergebnis == "draw") {
-                var text = "Draw";}
-
-            else{
-                var text = "Fehler";}
-
-                draw_text_tictactoe_gewinnanzeige(text, 1, 1);
+        if(ergebnis == "draw") {
+            var text = "Unentschieden";
         }else{
-            game_end = false;
+            var text = "Team" + ergebnis + "gewinnt";
         }
+
+        draw_text_tictactoe_gewinnanzeige(text, 1, 1);
+    }else{
+        game_end = false;
     }
+}
 
 
 function zwischenstandanzeige_tictactoe(results) {
