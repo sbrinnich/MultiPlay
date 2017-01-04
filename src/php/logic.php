@@ -43,11 +43,15 @@ function time_update(){
         db_con('delete', '4-gewinnt-temp');
         $field = get_field('4GEWINNT');
         $win_viergewinnt = viergewinnt_checkWinner($field, $next_turn);
+        if($win_viergewinnt !== null){
+        db_con('insert', array('game-states', array('4gewinnt'$win_viergewinnt )));
+        }
     }else{
         // Reset game
         $win_viergewinnt = null;
         db_con('delete', '4-gewinnt-temp');
         db_con('delete', '4-gewinnt');
+        db_con('insert', array('game-states', array('4gewinnt' null )));
     }
 
 

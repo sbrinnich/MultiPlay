@@ -47,11 +47,37 @@ function refresh_game_tictactoe(field){
         gamefield = field;
         draw_field_tictactoe();
         php_call('getteam', check_team_tictactoe);
-    }
-    if(!playing){
-        // TODO show vote status
+        db_call("get", "game-states", gewinnanzeige_4gewinnt);
     }
 }
+
+function gewinnanzeige_tictactoe(results) {
+
+
+    for(j=0;j < results.length; j++) {
+        if (results['game'][j] == "tictactoe") {
+            var position = j; }
+    }
+
+        if(results['states'][j] != 0) {
+            var ergebnis = results['game'].tictactoe['states'];
+
+            if(ergebnis == "Rot") {
+                var text = "Team Rot gewinnt";}
+
+            else if(ergebnis == "Blau") {
+                var text = "Team Rot gewinnt";}
+
+            else if(ergebnis == "draw") {
+                var text = "Draw";}
+
+            else{
+                var text = "Fehler";}
+
+                draw_text_tictactoe_gewinnanzeige(text, 1, 1);
+        }
+    }
+
 
 function zwischenstandanzeige_tictactoe(results) {
     for (var j = 0; j < results.length; j++) {
@@ -87,6 +113,16 @@ function draw_text_tictactoe(text, posx, posy){
     ctx.font = canvas.scrollWidth/6 + "px Arial";
     ctx.fillText(text,(canvas.scrollWidth/3*posx+canvas.scrollWidth/6), (canvas.scrollWidth/3*posy+canvas.scrollWidth/6), canvas.scrollWidth/3);
 }
+
+function draw_text_tictactoe_gewinnanzeige(text, posx, posy){
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = "#000000";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "center";
+    ctx.font = canvas.scrollWidth/6 + "px Arial";
+    ctx.fillText(text,(canvas.scrollWidth/3*posx+canvas.scrollWidth/6), (canvas.scrollWidth/3*posy+canvas.scrollWidth/6), canvas.scrollWidth);
+}
+
 
 function draw_field_tictactoe(){
     var ctx = canvas.getContext('2d');
