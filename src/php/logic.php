@@ -78,7 +78,7 @@ function time_update(){
         $win_tictactoe = null;
         db_con('delete', 'tic-tac-toe-temp');
         db_con('delete', 'tic-tac-toe');
-        db_con('insert', array('game-states', array('tictactoe', $win_tictactoe )));
+        db_con('insert', array('game-states', array('tictactoe', null )));
     }
 
     // CHANGE TEAM
