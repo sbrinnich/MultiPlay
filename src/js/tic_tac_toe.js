@@ -47,7 +47,7 @@ function refresh_game_tictactoe(field){
         gamefield = field;
         draw_field_tictactoe();
         php_call('getteam', check_team_tictactoe);
-        db_call("get", "game-states", gewinnanzeige_4gewinnt);
+        db_call("get", "game-states", gewinnanzeige_tictactoe);
     }
 }
 
@@ -59,7 +59,7 @@ function gewinnanzeige_tictactoe(results) {
             var position = j; }
     }
 
-        if(results['states'][j] != 0) {
+        if(results['states'][position] != 0) {
             var ergebnis = results['game'].tictactoe['states'];
 
             if(ergebnis == "Rot") {
