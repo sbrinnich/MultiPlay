@@ -44,14 +44,14 @@ function time_update(){
         $field = get_field('4GEWINNT');
         $win_viergewinnt = viergewinnt_checkWinner($field, $next_turn);
         if($win_viergewinnt !== null){
-        db_con('insert', array('game-states', array('4gewinnt'$win_viergewinnt )));
+        db_con('insert', array('game-states', array('4gewinnt', $win_viergewinnt )));
         }
     }else{
         // Reset game
         $win_viergewinnt = null;
         db_con('delete', '4-gewinnt-temp');
         db_con('delete', '4-gewinnt');
-        db_con('insert', array('game-states', array('4gewinnt' null )));
+        db_con('insert', array('game-states', array('4gewinnt', null )));
     }
 
 
@@ -72,11 +72,13 @@ function time_update(){
         db_con('delete', 'tic-tac-toe-temp');
         $field = get_field('TICTACTOE');
         $win_tictactoe = tictactoe_checkWinner($field, $next_turn);
+        db_con('insert', array('game-states', array('tictactoe', $win_tictactoe )));
     }else{
         // Reset game
         $win_tictactoe = null;
         db_con('delete', 'tic-tac-toe-temp');
         db_con('delete', 'tic-tac-toe');
+        db_con('insert', array('game-states', array('tictactoe', $win_tictactoe )));
     }
 
     // CHANGE TEAM
