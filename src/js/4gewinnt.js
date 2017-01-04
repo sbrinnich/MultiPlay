@@ -4,6 +4,8 @@ function load_4gewinnt(canv, field, team) {
     gamefield = field;
     teamname = team;
     playing = false;
+    game_end = false;
+    wait = true;
 
     hg = new Image();
     hg.src = "img/4-gewinnt/4-Gewinnt-board.png";
@@ -41,43 +43,43 @@ function init_canvas_4gewinnt() {
 
 function refresh_game_4gewinnt(field){
     if(!gamefield.equals(field)){
+        wait = true;
         gamefield = field;
         draw_field_4gewinnt();
         php_call('getteam', check_team_4gewinnt);
         db_call("get", "game-states", gewinnanzeige_4gewinnt);
     }
+    if(!playing && !game_end && !wait){
+        db_call("get", "4gewinnt_chosencount", zwischenstandanzeige_4gewinnt);
+    }
 }
 
 function gewinnanzeige_4gewinnt(results) {
-
-
     for(j=0;j < results.length; j++) {
-        if (results['game'][j] == "4gewinnt") {
+        if (results[j]['game'] == "4gewinnt") {
             var position = j; }
     }
 
-    if(results['state'][position] != null) {
-        var ergebnis = results['state'][position];
+    if(results[position]['state'] != null) {
+        game_end = true;
+        var ergebnis = results[position]['state'];
 
-        if(ergebnis == "Rot") {
-            var text = "Team Rot gewinnt";}
-
-        else if(ergebnis == "Blau") {
-            var text = "Team Rot gewinnt";}
-
-        else if(ergebnis == "draw") {
-            var text = "Draw";}
-
-        else{
-            var text = "Fehler";}
+        if(ergebnis == "draw") {
+            var text = "Unentschieden";
+        }else{
+            var text = "Team" + ergebnis + "gewinnt";
+        }
 
         draw_text_4gewinnt_gewinnanzeige(text, 3, 4);
+    }else{
+        game_end = false;
     }
 }
 
 
 function zwischenstandanzeige_4gewinnt(results) {
-
+    draw_field_4gewinnt();
+    draw_inactivestatus_4gewinnt();
     // Sorgt dafür das für jeder Spalte des Spiels ein Wert geschrieben wird
     for (var j = 0; j < results.length; j++) {
         // Da die Werte in der Datenbank nicht geordnet sind muss man sie Durchgehen und sich das Zwischenergebnis zu der dazugehörigen Spalte holen
@@ -95,6 +97,7 @@ function check_team_4gewinnt(team){
     }else{
         removeListener_4gewinnt();
     }
+    wait = false;
 }
 
 function draw_image_4gewinnt(image, xpos, ypos){
@@ -174,12 +177,12 @@ var do_player_turn_4gewinnt = function(e) {
 function addListener_4gewinnt() {
     canvas.addEventListener('mouseup', do_player_turn_4gewinnt);
     playing = true;
+    draw_field_4gewinnt();
 }
 
 function removeListener_4gewinnt() {
     canvas.removeEventListener('mouseup', do_player_turn_4gewinnt);
     playing = false;
-    draw_inactivestatus_4gewinnt();
     db_call("get", "4gewinnt_chosencount", zwischenstandanzeige_4gewinnt);
 }
 
