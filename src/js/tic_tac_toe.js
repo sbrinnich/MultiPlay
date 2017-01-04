@@ -47,20 +47,20 @@ function refresh_game_tictactoe(field){
         gamefield = field;
         draw_field_tictactoe();
         php_call('getteam', check_team_tictactoe);
-        db_call("get", "game-states", gewinnanzeige_tictactoe);
+        db_call("get", "all_game_states", gewinnanzeige_tictactoe);
     }
 }
 
 function gewinnanzeige_tictactoe(results) {
+    console.log(results);
 
-
-    for(j=0;j < results.length; j++) {
-        if (results['game'][j] == "tictactoe") {
+    for(var j=0;j < results.length; j++) {
+        if (results[j]['game'] == "tictactoe") {
             var position = j; }
     }
 
-        if(results['state'][position] != null) {
-            var ergebnis = results['state'][position];
+        if(results[position]['state'] != null) {
+            var ergebnis = results[position]['state'];
 
             if(ergebnis == "Rot") {
                 var text = "Team Rot gewinnt";}
