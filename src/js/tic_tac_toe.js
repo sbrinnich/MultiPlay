@@ -71,7 +71,7 @@ function gewinnanzeige_tictactoe(results) {
         if(ergebnis == "draw") {
             var text = "Unentschieden";
         }else{
-            var text = "Team" + ergebnis + "gewinnt";
+            var text = "Team " + ergebnis + " gewinnt";
         }
 
         draw_text_tictactoe_gewinnanzeige(text, 1, 1);
@@ -123,7 +123,7 @@ function draw_text_tictactoe_gewinnanzeige(text, posx, posy){
     ctx.fillStyle = "#000000";
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
-    ctx.font = canvas.scrollWidth/6 + "px Arial";
+    ctx.font = canvas.scrollWidth/3 + "px Arial";
     ctx.fillText(text,(canvas.scrollWidth/3*posx+canvas.scrollWidth/6), (canvas.scrollWidth/3*posy+canvas.scrollWidth/6), canvas.scrollWidth);
 }
 

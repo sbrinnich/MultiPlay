@@ -67,10 +67,10 @@ function gewinnanzeige_4gewinnt(results) {
         if(ergebnis == "draw") {
             var text = "Unentschieden";
         }else{
-            var text = "Team" + ergebnis + "gewinnt";
+            var text = "Team " + ergebnis + " gewinnt";
         }
 
-        draw_text_4gewinnt_gewinnanzeige(text, 3, 4);
+        draw_text_4gewinnt_gewinnanzeige(text, 3, 3);
     }else{
         game_end = false;
     }
@@ -129,13 +129,13 @@ function draw_text_4gewinnt_gewinnanzeige(text, xpos, ypos){
     ctx.fillStyle = "#000000";
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
-    ctx.font = (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/12 + "px Arial";
+    ctx.font = (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6 + "px Arial";
     ctx.fillText(text,
         (canvas.scrollWidth-canvas.scrollWidth*0.015625)/7*xpos+canvas.scrollWidth*0.0078125+
         (canvas.scrollWidth-canvas.scrollWidth*0.015625)/14,
         (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/6*ypos+canvas.scrollHeight*0.041168658699+
         (canvas.scrollHeight-canvas.scrollHeight*0.08366533864542)/12,
-        (canvas.scrollWidth-canvas.scrollWidth*0.015625));
+        canvas.scrollWidth);
 }
 
 
