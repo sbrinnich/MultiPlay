@@ -220,11 +220,12 @@ main div .item.picture .carousel-caption{
 
 /** Screen-specific heights on gamesite**/
 
-#gamesite_lgmd {
+
+#gamesite_lgmd div {
     height: 100%;
 }
 
-#gamesite_lgmd div {
+#gamesite_lgmd {
     height: 100%;
 }
 

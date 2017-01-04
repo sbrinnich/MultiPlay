@@ -100,7 +100,8 @@ function init_canvas_tictactoe()
     canvas.width  = canvas.scrollWidth;
     canvas.style.height=canvas.scrollWidth+'px';
     canvas.height = canvas.scrollWidth;
-    canvas.parentNode.style.height = canvas.scrollWidth+'px';
+    //set row height:
+    canvas.parentNode.parentNode.setAttribute("style","height: " + canvas.scrollWidth + "px;");
 }
 
 function draw_image_tictactoe(image, posx, posy){
