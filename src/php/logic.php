@@ -73,7 +73,8 @@ function time_update(){
         $field = get_field('TICTACTOE');
         $win_tictactoe = tictactoe_checkWinner($field, $next_turn);
         if($win_tictactoe !== null) {
-            db_con('update', array('game-states', array($win_tictactoe, 'tictactoe')));
+            $arr = db_con('update', array('game-states', array($win_tictactoe, 'tictactoe')));
+            echo '<pre>'; print_r($arr); echo '</pre>';
         }
     }else{
         // Reset game

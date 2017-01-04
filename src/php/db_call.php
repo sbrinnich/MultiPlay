@@ -97,8 +97,12 @@ function db_con($type, $arguments){
                         . " WHERE name='" . $arguments[1][1] . "'";
                         break;
                     case 'game-states':
-                        $sql = "UPDATE `game-states` SET state=" . $arguments[1][0]
-                            . " WHERE game='" . $arguments[1][1] . "'";
+                        if($arguments[1][0] === null){
+                            $sql = "UPDATE `game-states` SET state=NULL WHERE game='" . $arguments[1][1] . "'";
+                        }else{
+                            $sql = "UPDATE `game-states` SET state='" . $arguments[1][0]
+                                . "' WHERE game='" . $arguments[1][1] . "'";
+                        }
                         break;
                 }
                 if (mysqli_query($conn, $sql)) {
