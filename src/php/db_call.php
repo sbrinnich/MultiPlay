@@ -60,6 +60,10 @@ function db_con($type, $arguments){
                         $sql = "INSERT INTO `tic-tac-toe-temp` (posx, posy) VALUES (" .
                             $arguments[1][0] . "," . $arguments[1][1] . ")";
                         break;
+                    case 'game-states':
+                        $sql = "INSERT INTO `game-states` (game, state) VALUES (" .
+                            $arguments[1][0] . "," . $arguments[1][1] . "')";
+                        break;
                 }
 
                 if (mysqli_query($conn, $sql)) {
