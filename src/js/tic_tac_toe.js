@@ -66,7 +66,7 @@ function gewinnanzeige_tictactoe(results) {
                 var text = "Team Rot gewinnt";}
 
             else if(ergebnis == "Blau") {
-                var text = "Team Rot gewinnt";}
+                var text = "Team Blau gewinnt";}
 
             else if(ergebnis == "draw") {
                 var text = "Draw";}
