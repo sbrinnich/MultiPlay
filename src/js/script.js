@@ -13,6 +13,10 @@ window.onload = function() {
     }
 };
 
+window.onresize = function(){
+    location.reload();
+};
+
 //Play as Team-Member depending on get-parameter 'team' which should contain the team-name
 function play_as_team(){
     var teamname = findGetParameter("team"); //get parameter team
