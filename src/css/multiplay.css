@@ -218,6 +218,12 @@ main div .item.picture .carousel-caption{
     height: 100%;
 }
 
+.chathoehe-xs{
+    height: 50em !important;
+}
+
+
+
 /** Screen-specific heights on gamesite**/
 
 
