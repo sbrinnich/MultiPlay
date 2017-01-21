@@ -1,3 +1,13 @@
+window.onresize = function(){
+    if ($(window).width() == sitewidth){ //only height was changed
+        //do nothing
+    }
+    else { //only width or both were changed
+        sitewidth = $(window).width(); //Set new Sitewidth
+        location.reload(); //reload and thus resize everything
+    }
+};
+
 
 function load_tictactoe(canv, field, team) {
     canvas = canv;
