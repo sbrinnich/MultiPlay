@@ -60,6 +60,7 @@ a.navbar-brand img {
     margin-top: 0.8em;
     margin-left: 2em;
     display: inline-block;
+    color: white;
 }
 
 .navbar-toggle {
@@ -269,4 +270,9 @@ main div .item.picture .carousel-caption{
     padding-top: 6em;
     padding-left: 2em;
     height: auto;
+}
+
+canvas{
+    border: 0.5em solid white;
+    border-radius: 1em;
 }

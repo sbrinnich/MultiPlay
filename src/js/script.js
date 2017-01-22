@@ -23,6 +23,16 @@ function play_as_team(){
     return team; //return team if needed later
 }
 
+//Change color of canvas
+function changecanvascolor(tn){
+    if(tn == "Blau"){
+        canvas.setAttribute("style", "border-color: #0E78AD;");
+    }
+    else {
+        canvas.setAttribute("style", "border-color: #DB0E1C;");
+    }
+}
+
 
 /**
  * Load currently active canvas into global variable active_canvas(changes depending on screen-size)

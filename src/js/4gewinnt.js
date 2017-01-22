@@ -103,8 +103,10 @@ function zwischenstandanzeige_4gewinnt(results) {
 
 function check_team_4gewinnt(team){
     if(team['name'] == teamname){
+        changecanvascolor(team['name']);
         addListener_4gewinnt();
     }else{
+        changecanvascolor(team['name']);
         removeListener_4gewinnt();
     }
     wait = false;

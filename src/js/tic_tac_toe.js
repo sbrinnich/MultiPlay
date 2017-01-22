@@ -48,8 +48,10 @@ function load_tictactoe(canv, field, team) {
 
 function check_team_tictactoe(team){
     if(team['name'] == teamname){
+        changecanvascolor(team['name']);
         addListener_tictactoe();
     }else{
+        changecanvascolor(team['name']);
         removeListener_tictactoe();
     }
     wait = false;
