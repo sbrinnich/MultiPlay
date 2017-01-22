@@ -15,16 +15,6 @@ window.onload = function() {
     }
 };
 
-window.onresize = function(){
-    if ($(window).width() == sitewidth){ //only height was changed
-        //do nothing
-    }
-    else { //only width or both were changed
-        sitewidth = $(window).width(); //Set new Sitewidth
-        location.reload(); //reload and thus resize everything
-    }
-};
-
 //Play as Team-Member depending on get-parameter 'team' which should contain the team-name
 function play_as_team(){
     var teamname = findGetParameter("team"); //get parameter team
